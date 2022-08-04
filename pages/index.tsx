@@ -1,86 +1,366 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import { Avatar, Container } from "@mui/material";
+import type { NextPage } from "next";
+import Image from "next/image";
+import {
+    Backdrop,
+    CTASection,
+    FeatureBoxItem,
+    FeedBackPreviewSection,
+    GridRowDouble,
+    GridRowTriple,
+    HeroCTA,
+    ListStyleType,
+    StyledButton,
+    StyledHeroSection,
+} from "../components/styled";
+import StandardLayout from "../layouts/standard";
+import {
+    FaArrowRight,
+    FaBullhorn,
+    FaPenNib,
+    FaRegComment,
+    FaStar,
+} from "react-icons/fa";
+import CountUp from "react-countup";
+import { motion } from "framer-motion";
+import { Reveal } from "../helpers/animations";
 
 const Home: NextPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    return (
+        <StandardLayout>
+            {/* HERO SECTION */}
+            <StyledHeroSection>
+                <Container className="flex items-center">
+                    <GridRowDouble>
+                        <HeroCTA className="prose-sm text-center md:prose-lg md:text-left">
+                            <h1 className="font-bold text-blueGray-600 my-0 md:my-0">
+                                Designed to transform you into a more confident
+                                speaker
+                            </h1>
+                            <p className="text-gray-500">
+                                We are a bunch of sincere and dedicated folks
+                                passionate about helping those who come to us
+                                reach their full potential and communicate with
+                                confidence.
+                            </p>
+                            <div className="flex relative">
+                                <StyledButton
+                                    variant="contained"
+                                    color="error"
+                                    size="large"
+                                    className="relative inline-flex"
+                                >
+                                    <FaBullhorn /> Request a demo
+                                </StyledButton>
+                            </div>
+                        </HeroCTA>
+                        <motion.div
+                            initial={Reveal.offscreen}
+                            whileInView={Reveal.onscreen}
+                        >
+                            <Image
+                                src={"/images/hero-img.png"}
+                                alt="Carpe Diem Skills Academy"
+                                layout="responsive"
+                                width={752}
+                                height={734}
+                            />
+                        </motion.div>
+                    </GridRowDouble>
+                </Container>
+            </StyledHeroSection>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+            {/* CLASS TYPES SECTION */}
+            <section className="bg-cyan-50 py-8">
+                <Container className="py-8">
+                    <div className="w-full flex justify-center">
+                        <div className="prose-sm text-center md:prose-lg">
+                            <span className="font-medium text-xs text-red-500 uppercase">
+                                Welcome to Carpe Diem Skills Academy
+                            </span>
+                            <h2 className="my-0 md:my-0 font-bold text-blueGray-700">
+                                Our language courses
+                            </h2>
+                        </div>
+                    </div>
+                    <GridRowDouble className="my-8">
+                        <motion.div
+                            initial={Reveal.offscreen}
+                            whileInView={Reveal.onscreen}
+                            viewport={{ amount: 0.5 }}
+                        >
+                            <div className="my-4 md:my-0 flex flex-col justify-center items-center">
+                                <Image
+                                    src={"/images/adult-classes.png"}
+                                    alt="Learning classes for adults"
+                                    layout="intrinsic"
+                                    width={270}
+                                    height={245}
+                                />
+                                <div className="prose text-center max-w-sm mt-4 mb-7">
+                                    <h2 className="text-blueGray-700">
+                                        Learning Classes for Adults
+                                    </h2>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore.
+                                    </p>
+                                </div>
+                                <StyledButton
+                                    variant="contained"
+                                    size="large"
+                                    color="error"
+                                >
+                                    View more <FaArrowRight />
+                                </StyledButton>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            initial={Reveal.offscreen}
+                            whileInView={Reveal.onscreen}
+                            viewport={{ amount: 0.8 }}
+                        >
+                            <div className="my-4 md:my-0 flex flex-col justify-center items-center">
+                                <Image
+                                    src={"/images/kids-classes.png"}
+                                    alt="Learning classes for kids"
+                                    layout="intrinsic"
+                                    width={270}
+                                    height={245}
+                                />
+                                <div className="prose text-center max-w-sm mt-4 mb-7">
+                                    <h2 className="text-blueGray-700">
+                                        Learning Classes for kids
+                                    </h2>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore.
+                                    </p>
+                                </div>
+                                <StyledButton
+                                    variant="contained"
+                                    size="large"
+                                    color="error"
+                                >
+                                    View more <FaArrowRight />
+                                </StyledButton>
+                            </div>
+                        </motion.div>
+                    </GridRowDouble>
+                </Container>
+            </section>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
+            {/* COUNT SECTION */}
+            <section className="bg-red-500">
+                <Container>
+                    <GridRowTriple className="divide-y-[1px] divide-x-0 md:divide-x-[1px] md:divide-y-0 divide-red-700">
+                        <div className="p-6">
+                            <div className="prose md:prose-lg text-center py-10">
+                                <h1 className="text-white my-0 md:my-0">
+                                    <CountUp
+                                        start={2000}
+                                        end={3000}
+                                        duration={5}
+                                        useEasing={true}
+                                        suffix={"+"}
+                                    />
+                                </h1>
+                                <p className="text-white uppercase my-0 md:my-0">
+                                    Students
+                                </p>
+                            </div>
+                        </div>
+                        <div className="p-6">
+                            <div className="prose md:prose-lg text-center py-10">
+                                <h1 className="text-white my-0 md:my-0">
+                                    <CountUp
+                                        start={300}
+                                        end={500}
+                                        duration={5}
+                                        useEasing={true}
+                                        suffix={"+"}
+                                    />
+                                </h1>
+                                <p className="text-white uppercase my-0 md:my-0">
+                                    Sessions per day
+                                </p>
+                            </div>
+                        </div>
+                        <div className="p-6">
+                            <div className="prose md:prose-lg text-center py-10">
+                                <h1 className="text-white my-0 md:my-0">
+                                    <CountUp
+                                        start={0}
+                                        end={100}
+                                        duration={5}
+                                        useEasing={true}
+                                        suffix={"+"}
+                                    />
+                                </h1>
+                                <p className="text-white uppercase my-0 md:my-0">
+                                    Corporate Clients
+                                </p>
+                            </div>
+                        </div>
+                    </GridRowTriple>
+                </Container>
+            </section>
 
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
+            {/* WHY CHOOSE US */}
+            <section className="bg-white">
+                <Container>
+                    <div className="min-h-[400px] py-12 md:py-24">
+                        <div className="flex flex-col items-center justify-center space-y-8">
+                            <div className="prose md:prose-lg text-center">
+                                <span className="text-red-500 uppercase">
+                                    Carpe Diem Skills Academy
+                                </span>
+                                <h2 className="mt-0 md:mt-0 text-gray-700">
+                                    Why choose us?
+                                </h2>
+                                <p>
+                                    Ever since our inception in 2016, we have
+                                    placed all our efforts on consistent and
+                                    comprehensive training because unlike any
+                                    other skill, teaching communication skills
+                                    requires personal, dedicated attention, and
+                                    care. At CDSA, we treat one another and our
+                                    students as family.
+                                </p>
+                            </div>
+                            <ul className="my-6 text-gray-500 grid grid-cols-2 md:grid-cols-5 gap-5">
+                                <FeatureBoxItem>
+                                    <ListStyleType>
+                                        <FaStar />
+                                    </ListStyleType>
+                                    <p className="text-center">
+                                        Practice based Online English courses
+                                        accompanied with authenticated
+                                        materials.
+                                    </p>
+                                </FeatureBoxItem>
+                                <FeatureBoxItem>
+                                    <ListStyleType>
+                                        <FaStar />
+                                    </ListStyleType>
+                                    <p className="text-center">
+                                        Timely assessments (Pre and Post) and
+                                        regular feedback sessions by the
+                                        trainer.
+                                    </p>
+                                </FeatureBoxItem>
+                                <FeatureBoxItem>
+                                    <ListStyleType>
+                                        <FaStar />
+                                    </ListStyleType>
+                                    <p className="text-center">
+                                        Audio and video support materials with
+                                        exercises and activities for
+                                        self-practice.
+                                    </p>
+                                </FeatureBoxItem>
+                                <FeatureBoxItem>
+                                    <ListStyleType>
+                                        <FaStar />
+                                    </ListStyleType>
+                                    <p className="text-center">
+                                        Interactive sessions with engaging
+                                        topics make learning fun.
+                                    </p>
+                                </FeatureBoxItem>
+                                <FeatureBoxItem>
+                                    <ListStyleType>
+                                        <FaStar />
+                                    </ListStyleType>
+                                    <p className="text-center">
+                                        Maximum opportunities to hone your
+                                        communication skills on a wide variety
+                                        of topics to enhance confidence
+                                    </p>
+                                </FeatureBoxItem>
+                            </ul>
+                            <div className="flex justify-center py-12">
+                                <StyledButton
+                                    color="secondary"
+                                    variant="contained"
+                                    size="large"
+                                >
+                                    <FaBullhorn /> Request a demo
+                                </StyledButton>
+                            </div>
+                        </div>
+                    </div>
+                </Container>
+            </section>
 
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
+            {/* FEEDBACK PREVIEW */}
+            <FeedBackPreviewSection className="bg-[url('/images/feedback-bg.jpeg')]">
+                <Backdrop />
+                <Container className="relative z-10 min-h-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2">
+                        <div className="flex flex-col justify-center">
+                            <div className="bg-red-500 p-6 md:p-12 space-y-6 relative">
+                                <p className="prose italic font-mono text-white z-0">
+                                    It is really a great experience of learning
+                                    English here. The quality of the training is
+                                    amazing and done in a professional way.
+                                    Carpe Diem follows a very unique approach in
+                                    training. They help us to learn, grow, and
+                                    excel in life and it is a friendly learning
+                                    environment. Thanks for giving us the
+                                    wonderful pace to grow. Thanks to all the
+                                    trainers and Carpe Diem.
+                                </p>
+                                <div className="flex space-x-6 text-white items-center italic z-0">
+                                    <Avatar sizes="lg" />
+                                    <p className="font-bold">Sridevi Amuthan</p>
+                                </div>
+                                <div className="absolute bottom-0 right-0 p-6 -z-1">
+                                    <FaRegComment className="text-[142px] text-white opacity-20" />
+                                </div>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                </Container>
+            </FeedBackPreviewSection>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
+            {/* CTA */}
+            <CTASection>
+                <Container className="flex flex-col items-center py-12">
+                    <div className="prose text-center text-gray-700 max-w-lg mx-auto">
+                        <h1 className="text-blueGray-600 mb-0">
+                            Join our learning community
+                        </h1>
+                        <p>
+                            Carpe Diem Skills Academy offers the best
+                            Online/Offline Spoken English classes to improve
+                            your ability to communicate in English and scale to
+                            higher standards professionally and personally
+                        </p>
+                    </div>
+                    <div className="flex items-center justify-center my-6 gap-6">
+                        <StyledButton
+                            color="error"
+                            size="large"
+                            variant="contained"
+                        >
+                            <FaBullhorn /> Request a demo
+                        </StyledButton>
+                        <StyledButton
+                            color="error"
+                            size="large"
+                            variant="outlined"
+                        >
+                            <FaPenNib /> Enroll now
+                        </StyledButton>
+                    </div>
+                </Container>
+            </CTASection>
+        </StandardLayout>
+    );
+};
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
-  )
-}
-
-export default Home
+export default Home;
