@@ -1,22 +1,27 @@
 import { StyledButton, StyledHeader, StyledNavItem } from "./styled";
 import { FaSignInAlt } from "react-icons/fa";
 import { useState } from "react";
+import Link from "next/link";
 
 type Props = {};
 
 type NavItems = {
     name: string;
+    link: string;
 };
 
 const navItems: NavItems[] = [
     {
         name: "Home",
+        link: "",
     },
     {
         name: "About Us",
+        link: "about-us",
     },
     {
         name: "Contact Us",
+        link: "contact-us",
     },
 ];
 
@@ -31,13 +36,15 @@ const Header = (props: Props) => {
             <nav className="flex flex-row flex-1 h-full justify-center">
                 <ul className="flex flex-row gap-2 items-center">
                     {navItems.map((item, key) => (
-                        <StyledNavItem
-                            key={key}
-                            onClick={() => setActiveNav(key)}
-                            active={key === activeNav}
-                        >
-                            {item.name}
-                        </StyledNavItem>
+                        <Link href={`/${item.link}`}>
+                            <StyledNavItem
+                                key={key}
+                                onClick={() => setActiveNav(key)}
+                                active={key === activeNav}
+                            >
+                                {item.name}
+                            </StyledNavItem>
+                        </Link>
                     ))}
                 </ul>
             </nav>

@@ -5,6 +5,11 @@ type NavItemProps = {
     active: boolean;
 };
 
+type StyledButtonProps = {
+    [x: string]: any;
+    shade?: "light" | "dark";
+};
+
 export const StyledHeader = styled.div(() => [
     tw`flex flex-row w-full px-6 h-24 border-b items-center sticky`,
 ]);
@@ -14,13 +19,15 @@ export const StyledFooter = styled.div(() => [
     tw`bg-blueGray-900 text-white`,
 ]);
 
-export const StyledButton = styled(Button)(({ size, color }) => [
-    tw`rounded-lg text-sm font-semibold font-sans shadow-none gap-2`,
-    tw`hover:shadow-none`,
-    !size && tw`px-5 py-3`,
-    size === "large" && tw`px-6 py-4`,
-    color === "secondary" && tw`bg-blueGray-700 hover:bg-blueGray-800`,
-]);
+export const StyledButton = styled(Button)(
+    ({ size, color, shade }: StyledButtonProps) => [
+        tw`rounded-lg text-sm font-semibold font-sans shadow-none gap-2`,
+        tw`hover:shadow-none`,
+        size === "large" ? tw`px-6 py-4` : tw`px-5 py-3`,
+        color === "secondary" && tw`bg-blueGray-700 hover:bg-blueGray-800`,
+        shade === "light" && tw`bg-amber-50 hover:bg-amber-100 text-amber-700`,
+    ]
+);
 
 export const StyledNavItem = styled.li(({ active }: NavItemProps) => [
     tw`flex uppercase cursor-pointer text-sm font-semibold text-gray-400 h-full`,
@@ -61,4 +68,18 @@ export const Backdrop = styled.div(() => [
 
 export const CTASection = styled.section(() => [
     tw`bg-amber-50 text-gray-700 py-10`,
+]);
+
+export const PageHeader = styled.section(() => [
+    tw`bg-amber-50 p-12 w-full flex flex-col items-center justify-center md:min-h-[11rem]`,
+]);
+
+export const InputStyled = styled.input(() => [
+    tw`rounded-lg p-3 w-full bg-red-700 outline-none border-[1px] border-red-700 text-red-50`,
+    tw`focus:outline-none placeholder:text-red-100`,
+]);
+
+export const StyledTextArea = styled.textarea(() => [
+    tw`rounded-lg p-3 w-full bg-red-700 outline-none border-[1px] border-red-700 text-red-50`,
+    tw`focus:outline-none placeholder:text-red-100 focus:ring-0 focus:border-[1px] focus:border-red-700`,
 ]);

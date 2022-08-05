@@ -51,6 +51,12 @@ const Footer: FC = (props: Props) => {
                 <div className="px-6">
                     <div className="prose-sm">
                         <h2 className="text-blueGray-300">Address</h2>
+                        <p className="text-gray-500 text-sm my-0">
+                            96, K.K.Pudhur, <br />
+                            Maniam Kaliappa Gounder Street,
+                            <br />
+                            Coimbatore, Tamil Nadu - 641038
+                        </p>
                     </div>
                 </div>
             </GridRowTriple>
