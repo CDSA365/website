@@ -1,7 +1,39 @@
+import Link from "next/link";
 import { FC } from "react";
 import { GridRowTriple, StyledFooter } from "./styled";
 
 type Props = {};
+
+const navItems = [
+    {
+        name: "Home",
+        link: "",
+    },
+    {
+        name: "About Us",
+        link: "about-us",
+    },
+    {
+        name: "Classes",
+        link: "classes",
+    },
+    {
+        name: "Testimonials",
+        link: "testimonials",
+    },
+    {
+        name: "Contact Us",
+        link: "contact-us",
+    },
+    {
+        name: "Terms & Conditions",
+        link: "terms-and-conditions",
+    },
+    {
+        name: "Privacy Policy",
+        link: "privacy-policy",
+    },
+];
 
 const Footer: FC = (props: Props) => {
     return (
@@ -25,27 +57,11 @@ const Footer: FC = (props: Props) => {
                         <h2 className="text-blueGray-300">Explore</h2>
                     </div>
                     <ul className="list-disc flex flex-wrap">
-                        <li className="mr-7 text-blueGray-500 hover:text-red-500">
-                            Home
-                        </li>
-                        <li className="mr-7 text-blueGray-500 hover:text-red-500">
-                            About Us
-                        </li>
-                        <li className="mr-7 text-blueGray-500 hover:text-red-500">
-                            Classes
-                        </li>
-                        <li className="mr-7 text-blueGray-500 hover:text-red-500">
-                            Testimonials
-                        </li>
-                        <li className="mr-7 text-blueGray-500 hover:text-red-500">
-                            Contact us
-                        </li>
-                        <li className="mr-7 text-blueGray-500 hover:text-red-500">
-                            Privacy Policy
-                        </li>
-                        <li className="mr-7 text-blueGray-500 hover:text-red-500">
-                            Terms &amp; Conditions
-                        </li>
+                        {navItems.map((item, key) => (
+                            <li className="mr-7 text-blueGray-500 hover:text-red-500">
+                                <Link href={`/${item.link}`}>{item.name}</Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
                 <div className="px-6">

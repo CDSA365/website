@@ -20,11 +20,9 @@ type Props = {};
 const ContactUsPage = (props: Props) => {
     return (
         <StandardLayout>
-            <PageHeader>
-                <div className="prose-lg">
-                    <h1 className="font-semibold mb-0 text-red-500">
-                        Contact us
-                    </h1>
+            <PageHeader className="bg-[url('/images/pattern.png')]">
+                <div className="prose">
+                    <h1 className="mb-0 text-red-500">Contact us</h1>
                 </div>
             </PageHeader>
             <section className="bg-white py-12 md:py-24">

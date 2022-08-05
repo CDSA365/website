@@ -72,6 +72,7 @@ export const CTASection = styled.section(() => [
 
 export const PageHeader = styled.section(() => [
     tw`bg-amber-50 p-12 w-full flex flex-col items-center justify-center md:min-h-[11rem]`,
+    tw`bg-cover`,
 ]);
 
 export const InputStyled = styled.input(() => [
