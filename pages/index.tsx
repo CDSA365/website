@@ -24,6 +24,7 @@ import {
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { Reveal } from "../helpers/animations";
+import CallToAction from "../components/cta";
 
 const Home: NextPage = () => {
     return (
@@ -328,37 +329,7 @@ const Home: NextPage = () => {
             </FeedBackPreviewSection>
 
             {/* CTA */}
-            <CTASection>
-                <Container className="flex flex-col items-center py-12">
-                    <div className="prose text-center text-gray-700 max-w-lg mx-auto">
-                        <h1 className="text-blueGray-600 mb-0">
-                            Join our learning community
-                        </h1>
-                        <p>
-                            Carpe Diem Skills Academy offers the best
-                            Online/Offline Spoken English classes to improve
-                            your ability to communicate in English and scale to
-                            higher standards professionally and personally
-                        </p>
-                    </div>
-                    <div className="flex items-center justify-center my-6 gap-6">
-                        <StyledButton
-                            color="error"
-                            size="large"
-                            variant="contained"
-                        >
-                            <FaBullhorn /> Request a demo
-                        </StyledButton>
-                        <StyledButton
-                            color="error"
-                            size="large"
-                            variant="outlined"
-                        >
-                            <FaPenNib /> Enroll now
-                        </StyledButton>
-                    </div>
-                </Container>
-            </CTASection>
+            <CallToAction />
         </StandardLayout>
     );
 };

@@ -40,6 +40,10 @@ export const StyledHeroSection = styled.section(() => [
     tw`bg-amber-50 w-full md:min-h-[76vh]`,
 ]);
 
+export const MainSection = styled.section(() => [
+    tw`pt-12 md:pt-24 bg-white w-full`,
+]);
+
 export const GridRowDouble = styled.section(() => [
     tw`grid grid-cols-1 md:grid-cols-2 py-6 md:py-2 gap-3`,
 ]);
@@ -72,7 +76,7 @@ export const CTASection = styled.section(() => [
 
 export const PageHeader = styled.section(() => [
     tw`bg-amber-50 p-12 w-full flex flex-col items-center justify-center md:min-h-[11rem]`,
-    tw`bg-cover`,
+    tw`bg-cover bg-repeat bg-center`,
 ]);
 
 export const InputStyled = styled.input(() => [
