@@ -53,9 +53,11 @@ const Header = (props: Props) => {
                 </ul>
             </nav>
             <div className="flex w-1/6 justify-end">
-                <StyledButton color="error">
-                    <FaSignInAlt /> Login
-                </StyledButton>
+                <Link href={"/login"}>
+                    <StyledButton color="error">
+                        <FaSignInAlt /> Login
+                    </StyledButton>
+                </Link>
             </div>
         </StyledHeader>
     );

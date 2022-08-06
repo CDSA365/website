@@ -1,16 +1,14 @@
-import { MainSection, PageHeader } from "../../components/styled";
+import { NextPage } from "next";
+import PageHeading from "../../components/pageHeader";
+import { MainSection } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
 
 type Props = {};
 
-const PrivacyPolicyPage = (props: Props) => {
+const PrivacyPolicyPage: NextPage = (props: Props) => {
     return (
-        <StandardLayout>
-            <PageHeader>
-                <div className="prose">
-                    <h1 className="text-red-500">Privacy Policy</h1>
-                </div>
-            </PageHeader>
+        <StandardLayout {...props}>
+            <PageHeading title="Privacy Policy" />
             <MainSection>
                 <div className="prose mx-auto max-w-3xl space-y-6 pb-12 md:pb-24">
                     <h3>A. Privacy Policy</h3>
@@ -66,6 +64,10 @@ const PrivacyPolicyPage = (props: Props) => {
             </MainSection>
         </StandardLayout>
     );
+};
+
+PrivacyPolicyPage.defaultProps = {
+    title: "Privacy Policy - Carpe Diem Skills Academy",
 };
 
 export default PrivacyPolicyPage;

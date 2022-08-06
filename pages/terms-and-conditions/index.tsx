@@ -1,16 +1,14 @@
+import { NextPage } from "next";
+import PageHeading from "../../components/pageHeader";
 import { MainSection, PageHeader } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
 
 type Props = {};
 
-const TermsPage = (props: Props) => {
+const TermsPage: NextPage = (props: Props) => {
     return (
-        <StandardLayout>
-            <PageHeader>
-                <div className="prose">
-                    <h1 className="text-red-500">Terms &amp; Conditions</h1>
-                </div>
-            </PageHeader>
+        <StandardLayout {...props}>
+            <PageHeading title="Terms &amp; Conditions" />
             <MainSection>
                 <div className="prose mx-auto max-w-3xl space-y-6 pb-12 md:pb-24">
                     <p>
@@ -423,6 +421,10 @@ const TermsPage = (props: Props) => {
             </MainSection>
         </StandardLayout>
     );
+};
+
+TermsPage.defaultProps = {
+    title: "Terms & Conditions - Carpe Diem Skills Academy",
 };
 
 export default TermsPage;

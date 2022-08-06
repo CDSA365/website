@@ -12,6 +12,7 @@ import StandardLayout from "../../layouts/standard";
 import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
 import CallToAction from "../../components/cta";
+import PageHeading from "../../components/pageHeader";
 
 type Props = {};
 
@@ -58,11 +59,7 @@ const coursesImages = [
 const CoursesPage: FC = (props: Props) => {
     return (
         <StandardLayout {...props}>
-            <PageHeader className="bg-[url('/images/pattern-header.png')]">
-                <div className="prose">
-                    <h1 className="text-red-500">Courses</h1>
-                </div>
-            </PageHeader>
+            <PageHeading title="Courses" />
             <MainSection>
                 <Container className="pb-24">
                     <GridRowDouble>

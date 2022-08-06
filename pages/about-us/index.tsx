@@ -8,23 +8,19 @@ import {
     FeedBackPreviewSection,
     GridRowDouble,
     MainSection,
-    PageHeader,
     StyledButton,
 } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
 import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
+import PageHeading from "../../components/pageHeader";
 
 type Props = {};
 
 const AboutPage: FC = (props: Props) => {
     return (
         <StandardLayout {...props}>
-            <PageHeader className="bg-[url('/images/pattern-header.png')]">
-                <div className="prose">
-                    <h1 className="text-red-500">About Us</h1>
-                </div>
-            </PageHeader>
+            <PageHeading title="About Us" />
             <MainSection>
                 {/* INTRO */}
                 <section className="mb-24">

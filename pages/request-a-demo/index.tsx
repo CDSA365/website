@@ -1,9 +1,11 @@
 import { Input, Textarea, Select, Option } from "@material-tailwind/react";
 import { Box } from "@mui/material";
 import axios from "axios";
-import { ChangeEvent, FC, useState } from "react";
+import { NextPage } from "next";
+import { ChangeEvent, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
-import { MainSection, PageHeader, StyledButton } from "../../components/styled";
+import PageHeading from "../../components/pageHeader";
+import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
 
@@ -18,7 +20,7 @@ type FormData = {
     message: string;
 };
 
-const RequestDemo: FC = (props: Props) => {
+const RequestDemo: NextPage = (props: Props) => {
     const [errorFields, setErrorFields] = useState<string[]>([]);
     const [actionMessage, setActionMessage] = useState<string | null>(null);
     const [formData, setFormData] = useState<FormData>({
@@ -77,11 +79,7 @@ const RequestDemo: FC = (props: Props) => {
 
     return (
         <StandardLayout {...props}>
-            <PageHeader className="bg-[url('/images/pattern-header.png')]">
-                <div className="prose">
-                    <h1 className="text-red-500">Request a Demo</h1>
-                </div>
-            </PageHeader>
+            <PageHeading title="Request a Demo" />
             <MainSection className="pb-24">
                 <Box className="w-6/12 mx-auto p-10 bg-stone-50 border-[1px] rounded-lg space-y-6">
                     <div className="flex space-x-6">

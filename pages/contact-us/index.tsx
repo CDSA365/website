@@ -1,4 +1,3 @@
-import { FilledInput, FormControl, InputLabel, TextField } from "@mui/material";
 import { Container } from "@mui/system";
 import {
     FaClock,
@@ -6,10 +5,10 @@ import {
     FaMapMarkerAlt,
     FaPhoneAlt,
 } from "react-icons/fa";
+import PageHeading from "../../components/pageHeader";
 import {
     GridRowDouble,
     InputStyled,
-    PageHeader,
     StyledButton,
     StyledTextArea,
 } from "../../components/styled";
@@ -20,11 +19,7 @@ type Props = {};
 const ContactUsPage = (props: Props) => {
     return (
         <StandardLayout>
-            <PageHeader className="bg-[url('/images/pattern-header.png')]">
-                <div className="prose">
-                    <h1 className="mb-0 text-red-500">Contact us</h1>
-                </div>
-            </PageHeader>
+            <PageHeading title="Contact Us" />
             <section className="bg-white py-12 md:py-24">
                 <Container>
                     <GridRowDouble>
