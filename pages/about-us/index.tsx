@@ -12,13 +12,15 @@ import {
     StyledButton,
 } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
+import { motion } from "framer-motion";
+import { Reveal } from "../../helpers/animations";
 
 type Props = {};
 
 const AboutPage: FC = (props: Props) => {
     return (
         <StandardLayout {...props}>
-            <PageHeader>
+            <PageHeader className="bg-[url('/images/pattern-header.png')]">
                 <div className="prose">
                     <h1 className="text-red-500">About Us</h1>
                 </div>
@@ -27,34 +29,49 @@ const AboutPage: FC = (props: Props) => {
                 {/* INTRO */}
                 <section className="mb-24">
                     <Container>
-                        <section className="flex flex-col items-center space-y-6">
-                            <div className="prose mx-auto">
-                                <h2 className="text-blueGray-700 text-center">
-                                    Carpe Diem Skills Academy
-                                </h2>
-                                <p className="text-center">
-                                    Carpe Diem Skills Academy offers the best
-                                    Online/Offline Spoken English classes to
-                                    improve your ability to communicate in
-                                    English and scale to higher standards
-                                    professionally and personally. Our Online
-                                    speaking English Courses focus on a variety
-                                    of daily activity-based sessions, which
-                                    helps you not only to speak fluently but
-                                    also enhance your self-confidence and equip
-                                    you to face the society.
-                                </p>
-                            </div>
-                            <div>
-                                <StyledButton
-                                    variant="contained"
-                                    color="error"
-                                    size="large"
+                        <GridRowDouble>
+                            <section className="flex flex-col items-left justify-center space-y-6">
+                                <div className="prose mx-auto">
+                                    <h2 className="text-blueGray-700 text-left">
+                                        Carpe Diem Skills Academy
+                                    </h2>
+                                    <p className="text-left">
+                                        Carpe Diem Skills Academy offers the
+                                        best Online/Offline Spoken English
+                                        classes to improve your ability to
+                                        communicate in English and scale to
+                                        higher standards professionally and
+                                        personally. Our Online speaking English
+                                        Courses focus on a variety of daily
+                                        activity-based sessions, which helps you
+                                        not only to speak fluently but also
+                                        enhance your self-confidence and equip
+                                        you to face the society.
+                                    </p>
+                                </div>
+                                <div>
+                                    <StyledButton
+                                        variant="contained"
+                                        color="error"
+                                        size="large"
+                                    >
+                                        Request a demo
+                                    </StyledButton>
+                                </div>
+                            </section>
+                            <section className="relative flex items-center justify-center">
+                                <motion.div
+                                    initial={Reveal.offscreen}
+                                    whileInView={Reveal.onscreen}
                                 >
-                                    Request a demo
-                                </StyledButton>
-                            </div>
-                        </section>
+                                    <Image
+                                        src={"/images/pattern-2.png"}
+                                        width={400}
+                                        height={400}
+                                    />
+                                </motion.div>
+                            </section>
+                        </GridRowDouble>
                     </Container>
                 </section>
                 {/* OUR MISSION VISION */}

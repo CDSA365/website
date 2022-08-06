@@ -20,7 +20,7 @@ type Props = {};
 const ContactUsPage = (props: Props) => {
     return (
         <StandardLayout>
-            <PageHeader className="bg-[url('/images/pattern.png')]">
+            <PageHeader className="bg-[url('/images/pattern-header.png')]">
                 <div className="prose">
                     <h1 className="mb-0 text-red-500">Contact us</h1>
                 </div>

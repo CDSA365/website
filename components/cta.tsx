@@ -7,7 +7,7 @@ type Props = {};
 
 const CallToAction: FC = (props: Props) => {
     return (
-        <CTASection>
+        <CTASection className="">
             <Container className="flex flex-col items-center py-12">
                 <div className="prose text-center text-gray-700 max-w-lg mx-auto">
                     <h1 className="text-blueGray-600 mb-0">

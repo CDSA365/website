@@ -20,6 +20,10 @@ const navItems: NavItems[] = [
         link: "about-us",
     },
     {
+        name: "Courses",
+        link: "courses",
+    },
+    {
         name: "Contact Us",
         link: "contact-us",
     },
@@ -33,7 +37,7 @@ const Header = (props: Props) => {
             <div className="flex w-1/6 justify-start">
                 <h1>Logo</h1>
             </div>
-            <nav className="flex flex-row flex-1 h-full justify-center">
+            <nav className="hidden md:flex md:flex-row md:flex-1 h-full justify-center">
                 <ul className="flex flex-row gap-2 items-center">
                     {navItems.map((item, key) => (
                         <Link href={`/${item.link}`}>

@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import {
     Backdrop,
-    CTASection,
     FeatureBoxItem,
     FeedBackPreviewSection,
     GridRowDouble,
@@ -14,13 +13,7 @@ import {
     StyledHeroSection,
 } from "../components/styled";
 import StandardLayout from "../layouts/standard";
-import {
-    FaArrowRight,
-    FaBullhorn,
-    FaPenNib,
-    FaRegComment,
-    FaStar,
-} from "react-icons/fa";
+import { FaArrowRight, FaBullhorn, FaRegComment, FaStar } from "react-icons/fa";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { Reveal } from "../helpers/animations";

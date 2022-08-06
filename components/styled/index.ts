@@ -10,12 +10,17 @@ type StyledButtonProps = {
     shade?: "light" | "dark";
 };
 
+type GridType = {
+    [x: string]: any;
+    inline?: boolean;
+};
+
 export const StyledHeader = styled.div(() => [
     tw`flex flex-row w-full px-6 h-24 border-b items-center sticky`,
 ]);
 
 export const StyledFooter = styled.div(() => [
-    tw`flex w-full px-12 py-6 border-t`,
+    tw`flex w-full px-6 md:px-12 py-3 md:py-6 border-t`,
     tw`bg-blueGray-900 text-white`,
 ]);
 
@@ -48,8 +53,9 @@ export const GridRowDouble = styled.section(() => [
     tw`grid grid-cols-1 md:grid-cols-2 py-6 md:py-2 gap-3`,
 ]);
 
-export const GridRowTriple = styled.section(() => [
-    tw`grid grid-cols-1 md:grid-cols-3 py-6 md:py-2 gap-3`,
+export const GridRowTriple = styled.section(({ inline }: GridType) => [
+    inline ? tw`inline-grid` : tw`grid`,
+    tw`grid-cols-1 md:grid-cols-3 py-6 md:py-2 gap-3`,
 ]);
 
 export const HeroCTA = styled.div(() => [
@@ -76,7 +82,7 @@ export const CTASection = styled.section(() => [
 
 export const PageHeader = styled.section(() => [
     tw`bg-amber-50 p-12 w-full flex flex-col items-center justify-center md:min-h-[11rem]`,
-    tw`bg-cover bg-repeat bg-center`,
+    tw`bg-contain bg-repeat bg-opacity-60`,
 ]);
 
 export const InputStyled = styled.input(() => [

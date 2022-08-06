@@ -14,8 +14,8 @@ const navItems = [
         link: "about-us",
     },
     {
-        name: "Classes",
-        link: "classes",
+        name: "Courses",
+        link: "courses",
     },
     {
         name: "Testimonials",
@@ -37,8 +37,8 @@ const navItems = [
 
 const Footer: FC = (props: Props) => {
     return (
-        <StyledFooter className="divide-y-[1px] divide-blueGray-700 flex-col gap-6">
-            <GridRowTriple className="divide-x-[1px] divide-blueGray-700">
+        <StyledFooter className="md:divide-y-[1px] md divide-blueGray-700 flex-col gap-6">
+            <GridRowTriple className="divide-y-[1px] md:divide-x-[1px] md:divide-y-0 divide-blueGray-700">
                 <div className="flex flex-row items-start px-6">
                     <div className="prose-sm">
                         <h2 className="text-blueGray-300">
