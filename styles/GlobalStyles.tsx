@@ -8,6 +8,10 @@ const customStyles = css`
         -webkit-tap-highlight-color: ${theme`colors.purple.500`};
         ${tw`antialiased`}
     }
+    input:focus {
+        outline: none;
+        border: none;
+    }
 `;
 
 const GlobalStyles = () => (

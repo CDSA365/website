@@ -40,7 +40,7 @@ const Header = (props: Props) => {
             <nav className="hidden md:flex md:flex-row md:flex-1 h-full justify-center">
                 <ul className="flex flex-row gap-2 items-center">
                     {navItems.map((item, key) => (
-                        <Link href={`/${item.link}`}>
+                        <Link href={`/${item.link}`} key={key}>
                             <StyledNavItem
                                 key={key}
                                 onClick={() => setActiveNav(key)}

@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import { FC } from "react";
 import { FaBullhorn, FaPenNib } from "react-icons/fa";
+import RequestDemoButton from "./requestDemoButton";
 import { StyledButton, CTASection } from "./styled";
 
 type Props = {};
@@ -21,13 +22,7 @@ const CallToAction: FC = (props: Props) => {
                     </p>
                 </div>
                 <div className="flex items-center justify-center my-6 gap-6">
-                    <StyledButton
-                        color="error"
-                        size="large"
-                        variant="contained"
-                    >
-                        <FaBullhorn /> Request a demo
-                    </StyledButton>
+                    <RequestDemoButton />
                     <StyledButton color="error" size="large" variant="outlined">
                         <FaPenNib /> Enroll now
                     </StyledButton>

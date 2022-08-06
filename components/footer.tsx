@@ -58,7 +58,10 @@ const Footer: FC = (props: Props) => {
                     </div>
                     <ul className="list-disc flex flex-wrap">
                         {navItems.map((item, key) => (
-                            <li className="mr-7 text-blueGray-500 hover:text-red-500">
+                            <li
+                                className="mr-7 text-blueGray-500 hover:text-red-500"
+                                key={key}
+                            >
                                 <Link href={`/${item.link}`}>{item.name}</Link>
                             </li>
                         ))}
