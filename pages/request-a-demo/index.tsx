@@ -1,5 +1,5 @@
 import { Input, Textarea, Select, Option } from "@material-tailwind/react";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import axios from "axios";
 import { NextPage } from "next";
 import { ChangeEvent, useState } from "react";
@@ -80,106 +80,108 @@ const RequestDemo: NextPage = (props: Props) => {
     return (
         <StandardLayout {...props}>
             <PageHeading title="Request a Demo" />
-            <MainSection className="pb-24">
-                <Box className="w-6/12 mx-auto p-10 bg-stone-50 border-[1px] rounded-lg space-y-6">
-                    <div className="flex space-x-6">
-                        <Input
-                            required
+            <MainSection className="pb-12 md:pb-24">
+                <Container>
+                    <Box className="w-full md:w-6/12 mx-auto p-5 md:p-10 bg-stone-50 border-[1px] rounded-lg space-y-6">
+                        <div className="flex flex-col space-y-6 space-x-0 md:flex-row md:space-y-0 md:space-x-6">
+                            <Input
+                                required
+                                size="lg"
+                                variant="outlined"
+                                name="first_name"
+                                label="First Name"
+                                className="bg-stone-100"
+                                value={formData.first_name || ""}
+                                onChange={handleChange}
+                                error={errorFields.includes("first_name")}
+                            />
+                            <Input
+                                required
+                                size="lg"
+                                variant="outlined"
+                                name="last_name"
+                                label="Last Name"
+                                className="bg-stone-100"
+                                value={formData.last_name || ""}
+                                onChange={handleChange}
+                                error={errorFields.includes("last_name")}
+                            />
+                        </div>
+                        <div className="flex flex-col space-y-6 space-x-0 md:flex-row md:space-y-0 md:space-x-6">
+                            <Input
+                                required
+                                size="lg"
+                                variant="outlined"
+                                name="email"
+                                label="Email"
+                                className="bg-stone-100"
+                                value={formData.email || ""}
+                                onChange={handleChange}
+                                error={errorFields.includes("email")}
+                            />
+                            <Input
+                                required
+                                size="lg"
+                                variant="outlined"
+                                name="phone"
+                                label="Phone"
+                                className="bg-stone-100"
+                                value={formData.phone || ""}
+                                onChange={handleChange}
+                                error={errorFields.includes("phone")}
+                            />
+                        </div>
+                        <Select
                             size="lg"
                             variant="outlined"
-                            name="first_name"
-                            label="First Name"
+                            label="Program"
                             className="bg-stone-100"
-                            value={formData.first_name || ""}
-                            onChange={handleChange}
-                            error={errorFields.includes("first_name")}
-                        />
-                        <Input
-                            required
-                            size="lg"
-                            variant="outlined"
-                            name="last_name"
-                            label="Last Name"
-                            className="bg-stone-100"
-                            value={formData.last_name || ""}
-                            onChange={handleChange}
-                            error={errorFields.includes("last_name")}
-                        />
-                    </div>
-                    <div className="flex space-x-6">
-                        <Input
-                            required
-                            size="lg"
-                            variant="outlined"
-                            name="email"
-                            label="Email"
-                            className="bg-stone-100"
-                            value={formData.email || ""}
-                            onChange={handleChange}
-                            error={errorFields.includes("email")}
-                        />
-                        <Input
-                            required
-                            size="lg"
-                            variant="outlined"
-                            name="phone"
-                            label="Phone"
-                            className="bg-stone-100"
-                            value={formData.phone || ""}
-                            onChange={handleChange}
-                            error={errorFields.includes("phone")}
-                        />
-                    </div>
-                    <Select
-                        size="lg"
-                        variant="outlined"
-                        label="Program"
-                        className="bg-stone-100"
-                        value={formData.program || ""}
-                        onChange={(e: any) => handleSelectChange(e)}
-                        error={errorFields.includes("program")}
-                    >
-                        <Option value="Kids">
-                            Spoken english training for Kids
-                        </Option>
-                        <Option value="Adults">
-                            Spoken english training for Adults
-                        </Option>
-                    </Select>
-                    <Textarea
-                        required
-                        size="lg"
-                        variant="outlined"
-                        name="message"
-                        label="Message"
-                        className="bg-stone-100 focus:ring-0"
-                        value={formData.message || ""}
-                        onChange={handleChange}
-                        error={errorFields.includes("message")}
-                    />
-                    <div className="flex gap-8 items-center">
-                        <StyledButton
-                            variant="contained"
-                            size="medium"
-                            color="error"
-                            type="submit"
-                            onClick={handleSubmit}
+                            value={formData.program || ""}
+                            onChange={(e: any) => handleSelectChange(e)}
+                            error={errorFields.includes("program")}
                         >
-                            Submit Request
-                        </StyledButton>
-                        {errorFields.length !== 0 && (
-                            <p className="flex items-center gap-3">
-                                <FaExclamationCircle className="text-red-500" />
-                                Please fill all the fields
-                            </p>
-                        )}
-                        {actionMessage && (
-                            <p className="flex items-center gap-3">
-                                {actionMessage}
-                            </p>
-                        )}
-                    </div>
-                </Box>
+                            <Option value="Kids">
+                                Spoken english training for Kids
+                            </Option>
+                            <Option value="Adults">
+                                Spoken english training for Adults
+                            </Option>
+                        </Select>
+                        <Textarea
+                            required
+                            size="lg"
+                            variant="outlined"
+                            name="message"
+                            label="Message"
+                            className="bg-stone-100 focus:ring-0"
+                            value={formData.message || ""}
+                            onChange={handleChange}
+                            error={errorFields.includes("message")}
+                        />
+                        <div className="flex gap-8 items-center">
+                            <StyledButton
+                                variant="contained"
+                                size="medium"
+                                color="error"
+                                type="submit"
+                                onClick={handleSubmit}
+                            >
+                                Submit Request
+                            </StyledButton>
+                            {errorFields.length !== 0 && (
+                                <p className="flex items-center gap-3">
+                                    <FaExclamationCircle className="text-red-500" />
+                                    Please fill all the fields
+                                </p>
+                            )}
+                            {actionMessage && (
+                                <p className="flex items-center gap-3">
+                                    {actionMessage}
+                                </p>
+                            )}
+                        </div>
+                    </Box>
+                </Container>
             </MainSection>
         </StandardLayout>
     );
