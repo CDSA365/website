@@ -6,14 +6,13 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import { FaPen, FaSignInAlt } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import PageHeading from "../../components/pageHeader";
+import Spinner from "../../components/spinner";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
-import { increment } from "../../store/slice/counter-slice";
 import { addUser } from "../../store/slice/user-slice";
-import { RootState } from "../../store/store";
 
 type Props = {};
 
@@ -23,8 +22,8 @@ type FormData = {
 };
 
 const LoginPage: NextPage = (props: Props) => {
-    const count = useSelector((state: RootState) => state.counter.value);
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
     const [errorFields, setErrorFields] = useState<string[]>([]);
     const [formData, setFormData] = useState<FormData>({
         email: "",
@@ -47,12 +46,15 @@ const LoginPage: NextPage = (props: Props) => {
 
     const handleSubmit = () => {
         if (validate(formData)) {
+            setIsLoading(true);
             axios
                 .post(config.api.login, formData)
-                .then(({ data }) =>
-                    dispatch(addUser({ ...data, isLoggedIn: true }))
-                )
-                .catch((err) => console.log(err));
+                .then(({ data }) => {
+                    dispatch(addUser({ ...data, isLoggedIn: true }));
+                    setFormData({ email: "", password: "" });
+                })
+                .catch((err) => console.log(err))
+                .finally(() => setIsLoading(false));
         }
     };
 
@@ -93,8 +95,11 @@ const LoginPage: NextPage = (props: Props) => {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            startIcon={<FaSignInAlt />}
+                            startIcon={
+                                isLoading ? <Spinner /> : <FaSignInAlt />
+                            }
                             onClick={handleSubmit}
+                            disabled={isLoading}
                         >
                             Login
                         </StyledButton>
@@ -111,14 +116,6 @@ const LoginPage: NextPage = (props: Props) => {
                                 Create an account
                             </StyledButton>
                         </Link>
-                        <StyledButton
-                            fullWidth
-                            variant="contained"
-                            color="success"
-                            onClick={() => dispatch(increment())}
-                        >
-                            {count}
-                        </StyledButton>
                     </Box>
                 </Container>
             </MainSection>
