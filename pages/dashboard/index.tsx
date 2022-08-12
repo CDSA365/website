@@ -1,4 +1,27 @@
+import {
+    Divider,
+    IconButton,
+    List,
+    ListItem,
+    ListItemText,
+    Typography,
+} from "@mui/material";
 import { FC } from "react";
+import {
+    FaArrowRight,
+    FaCheck,
+    FaChevronRight,
+    FaClock,
+    FaSpinner,
+} from "react-icons/fa";
+import {
+    StatsContainer,
+    StatsContent,
+    StatsIcon,
+    StatsItem,
+    StatsToolbar,
+    StyledButton,
+} from "../../components/styled";
 import DashboardLayout from "../../layouts/student-dashboard";
 
 type Props = {};
@@ -7,142 +30,134 @@ const DashboardHome: FC<Props> = (props: Props) => {
     return (
         <DashboardLayout>
             <div className="">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-                    Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed
-                    adipiscing. Amet nisl suscipit adipiscing bibendum est
-                    ultricies integer quis. Cursus euismod quis viverra nibh
-                    cras. Metus vulputate eu scelerisque felis imperdiet proin
-                    fermentum leo. Mauris commodo quis imperdiet massa
-                    tincidunt. Cras tincidunt lobortis feugiat vivamus at augue.
-                    At augue eget arcu dictum varius duis at consectetur lorem.
-                    Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </p>
+                <StatsContainer>
+                    <StatsItem>
+                        <StatsToolbar>
+                            <StatsIcon>
+                                <FaClock />
+                            </StatsIcon>
+                            <div className="prose">
+                                <h6 className="font-semibold text-slate-600">
+                                    Scheduled Classes
+                                </h6>
+                            </div>
+                        </StatsToolbar>
+                        <StatsContent>
+                            <List>
+                                {[...Array(6)].map((_, key) => (
+                                    <ListItem
+                                        alignItems="flex-start"
+                                        key={key}
+                                        divider
+                                        secondaryAction={
+                                            <IconButton
+                                                edge="end"
+                                                aria-label="view"
+                                                size="small"
+                                                color="default"
+                                            >
+                                                <FaArrowRight />
+                                            </IconButton>
+                                        }
+                                        className="last:border-0"
+                                    >
+                                        <ListItemText
+                                            primary="List item one"
+                                            secondary="I'll be in your neighborhood doing errands this"
+                                        />
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </StatsContent>
+                        <StyledButton fullWidth variant="outlined" color="info">
+                            View all
+                        </StyledButton>
+                    </StatsItem>
+                    <StatsItem>
+                        <StatsToolbar>
+                            <StatsIcon>
+                                <FaSpinner />
+                            </StatsIcon>
+                            <div className="prose">
+                                <h6 className="font-semibold text-slate-600">
+                                    In-progress Classes
+                                </h6>
+                            </div>
+                        </StatsToolbar>
+                        <StatsContent>
+                            <List>
+                                {[...Array(6)].map((_, key) => (
+                                    <ListItem
+                                        alignItems="flex-start"
+                                        key={key}
+                                        divider
+                                        secondaryAction={
+                                            <IconButton
+                                                edge="end"
+                                                aria-label="view"
+                                                size="small"
+                                                color="default"
+                                            >
+                                                <FaArrowRight />
+                                            </IconButton>
+                                        }
+                                        className="last:border-0"
+                                    >
+                                        <ListItemText
+                                            primary="List item one"
+                                            secondary="I'll be in your neighborhood doing errands this"
+                                        />
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </StatsContent>
+                        <StyledButton fullWidth variant="outlined" color="info">
+                            View all
+                        </StyledButton>
+                    </StatsItem>
+                    <StatsItem>
+                        <StatsToolbar>
+                            <StatsIcon>
+                                <FaCheck />
+                            </StatsIcon>
+                            <div className="prose">
+                                <h6 className="font-semibold text-slate-600">
+                                    Completed Classes
+                                </h6>
+                            </div>
+                        </StatsToolbar>
+                        <StatsContent>
+                            <List>
+                                {[...Array(6)].map((_, key) => (
+                                    <ListItem
+                                        alignItems="flex-start"
+                                        key={key}
+                                        divider
+                                        secondaryAction={
+                                            <IconButton
+                                                edge="end"
+                                                aria-label="view"
+                                                size="small"
+                                                color="default"
+                                            >
+                                                <FaArrowRight />
+                                            </IconButton>
+                                        }
+                                        className="last:border-0"
+                                    >
+                                        <ListItemText
+                                            primary="List item one"
+                                            secondary="I'll be in your neighborhood doing errands this"
+                                        />
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </StatsContent>
+                        <StyledButton fullWidth variant="outlined" color="info">
+                            View all
+                        </StyledButton>
+                    </StatsItem>
+                </StatsContainer>
             </div>
         </DashboardLayout>
     );

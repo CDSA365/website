@@ -1,4 +1,4 @@
-import { AppBar, Button, Drawer, Toolbar } from "@mui/material";
+import { AppBar, Button, Drawer, Paper, Toolbar } from "@mui/material";
 import { Box } from "@mui/system";
 import tw, { styled } from "twin.macro";
 
@@ -138,5 +138,21 @@ export const DashboardMainSection = styled.section<DashboardMainSectionType>(
 );
 
 export const StyledContentBox = styled(Box)(() => [
-    tw`mt-16 clear-both bg-slate-100`,
+    tw`mt-16 clear-both bg-slate-100 h-full`,
 ]);
+
+export const StatsContainer = styled.section(() => [
+    tw`grid grid-cols-1 md:grid-cols-3 gap-6`,
+]);
+
+export const StatsItem = styled.div(() => [tw`flex flex-col gap-6`]);
+
+export const StatsToolbar = styled.div(() => [
+    tw`bg-white rounded-lg p-4 flex gap-6 text-sky-500 items-center`,
+]);
+
+export const StatsIcon = styled.div(() => [
+    tw`text-3xl p-4 rounded-lg bg-sky-100`,
+]);
+
+export const StatsContent = styled(Paper)(() => [tw`rounded-lg shadow-none`]);

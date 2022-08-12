@@ -6,13 +6,15 @@ import {
     ListSubheader,
 } from "@mui/material";
 import Link from "next/link";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import {
     FaBullhorn,
     FaCheck,
     FaClock,
     FaEnvelope,
+    FaHome,
     FaMoneyBill,
+    FaPenNib,
     FaSpinner,
     FaUser,
 } from "react-icons/fa";
@@ -20,6 +22,31 @@ import {
 type Props = {};
 
 const MenuItem = [
+    {
+        section: "Dashboard",
+        items: [
+            {
+                name: "Home",
+                icon: <FaHome className="text-stone-300" />,
+                link: "/dashboard",
+            },
+            {
+                name: "Announcements",
+                icon: <FaBullhorn className="text-stone-300" />,
+                link: "/dashboard/announcements",
+            },
+            {
+                name: "Assignments",
+                icon: <FaPenNib className="text-stone-300" />,
+                link: "/dashboard/announcements",
+            },
+            {
+                name: "Payments",
+                icon: <FaMoneyBill className="text-stone-300" />,
+                link: "/dashboard/payments",
+            },
+        ],
+    },
     {
         section: "Classes",
         items: [
@@ -40,21 +67,7 @@ const MenuItem = [
             },
         ],
     },
-    {
-        section: "Dashboard",
-        items: [
-            {
-                name: "Announcements",
-                icon: <FaBullhorn className="text-stone-300" />,
-                link: "/dashboard/announcements",
-            },
-            {
-                name: "Payments",
-                icon: <FaMoneyBill className="text-stone-300" />,
-                link: "/dashboard/payments",
-            },
-        ],
-    },
+
     {
         section: "Settings",
         items: [
@@ -68,6 +81,14 @@ const MenuItem = [
 ];
 
 const StudentMenu: FC<Props> = (props) => {
+    const [selectedIndex, setSelectedIndex] = useState<number>();
+    const [selectedSection, setSelectedSection] = useState<string>();
+
+    const handleClick = (index: number, section: string) => {
+        setSelectedIndex(index);
+        setSelectedSection(section);
+    };
+
     return (
         <div>
             {MenuItem.map((item, key) => {
@@ -94,7 +115,16 @@ const StudentMenu: FC<Props> = (props) => {
                     >
                         {item.items.map((menu, key) => (
                             <Link href={menu.link}>
-                                <ListItemButton key={key}>
+                                <ListItemButton
+                                    key={key}
+                                    selected={
+                                        selectedIndex === key &&
+                                        selectedSection === item.section
+                                    }
+                                    onClick={() =>
+                                        handleClick(key, item.section)
+                                    }
+                                >
                                     <ListItemIcon>{menu.icon}</ListItemIcon>
                                     <ListItemText
                                         primary={menu.name}
