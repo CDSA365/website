@@ -6,17 +6,17 @@ import { cache } from "@emotion/css";
 import store, { wrapper, persistor } from "../store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { CircularProgress } from "@mui/material";
+import PrivateRoutes from "../components/private-routes";
 
 function MyApp({ Component, pageProps }: AppProps) {
+    const protectedRoutes = ["/dashboard"];
     return (
         <CacheProvider value={cache}>
             <Provider store={store}>
-                <PersistGate
-                    persistor={persistor}
-                    loading={<CircularProgress />}
-                >
-                    <Component {...pageProps} />
+                <PersistGate persistor={persistor} loading={null}>
+                    <PrivateRoutes protectedRoutes={protectedRoutes}>
+                        <Component {...pageProps} />
+                    </PrivateRoutes>
                 </PersistGate>
             </Provider>
         </CacheProvider>

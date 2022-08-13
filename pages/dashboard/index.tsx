@@ -1,19 +1,6 @@
-import {
-    Divider,
-    IconButton,
-    List,
-    ListItem,
-    ListItemText,
-    Typography,
-} from "@mui/material";
 import { FC } from "react";
-import {
-    FaArrowRight,
-    FaCheck,
-    FaChevronRight,
-    FaClock,
-    FaSpinner,
-} from "react-icons/fa";
+import { IconButton, List, ListItem, ListItemText } from "@mui/material";
+import { FaArrowRight, FaCheck, FaClock, FaSpinner } from "react-icons/fa";
 import {
     StatsContainer,
     StatsContent,

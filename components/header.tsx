@@ -1,7 +1,8 @@
 import { StyledButton, StyledHeader, StyledNavItem } from "./styled";
-import { FaSignInAlt } from "react-icons/fa";
+import { FaSignInAlt, FaUser } from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
+import { useAppSelector } from "../store/hooks";
 
 type Props = {};
 
@@ -31,7 +32,7 @@ const navItems: NavItems[] = [
 
 const Header = (props: Props) => {
     const [activeNav, setActiveNav] = useState<number | null>(null);
-
+    const { data: user } = useAppSelector((state) => state.user);
     return (
         <StyledHeader>
             <div className="flex w-1/6 justify-start">
@@ -53,11 +54,19 @@ const Header = (props: Props) => {
                 </ul>
             </nav>
             <div className="flex w-1/6 justify-end">
-                <Link href={"/login"}>
-                    <StyledButton color="error">
-                        <FaSignInAlt /> Login
-                    </StyledButton>
-                </Link>
+                {!user.isLoggedIn ? (
+                    <Link href={"/login"}>
+                        <StyledButton color="error">
+                            <FaSignInAlt /> Login
+                        </StyledButton>
+                    </Link>
+                ) : (
+                    <Link href={"/dashboard"}>
+                        <StyledButton startIcon={<FaUser />} size="small">
+                            Profile
+                        </StyledButton>
+                    </Link>
+                )}
             </div>
         </StyledHeader>
     );

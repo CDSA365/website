@@ -21,11 +21,11 @@ type SidebarType = {
 };
 
 type DashboardMainSectionType = {
-    sidebarVisible: boolean;
+    sidebarvisible: boolean;
 };
 
 type AppbarType = {
-    sidebarVisible: boolean;
+    sidebarvisible: boolean;
 };
 
 export const StyledHeader = styled.div(() => [
@@ -108,10 +108,10 @@ export const StyledTextArea = styled.textarea(() => [
     tw`focus:outline-none placeholder:text-red-100 focus:ring-0 focus:border-[1px] focus:border-red-700`,
 ]);
 
-export const StyledAppBar = styled(AppBar)<AppbarType>(({ sidebarVisible }) => [
+export const StyledAppBar = styled(AppBar)<AppbarType>(({ sidebarvisible }) => [
     tw`ml-[240px] w-[calc(100% - 240px)] flex-1 transition-all ease-in-out delay-150`,
     tw`border-b border-stone-200 bg-white`,
-    !sidebarVisible && tw`ml-0 w-full`,
+    !sidebarvisible && tw`ml-0 w-full`,
 ]);
 
 export const StyledDrawer = styled(Drawer)(() => [
@@ -130,10 +130,10 @@ export const SideBar = styled.section<SidebarType>(({ show }) => [
 ]);
 
 export const DashboardMainSection = styled.section<DashboardMainSectionType>(
-    ({ sidebarVisible }) => [
+    ({ sidebarvisible }) => [
         tw`w-[calc(100% - 240px)] ml-[240px] flex-1 transition-all ease-in-out delay-150`,
         tw`h-full overflow-y-scroll relative`,
-        !sidebarVisible && tw`w-full ml-0`,
+        !sidebarvisible && tw`w-full ml-0`,
     ]
 );
 
@@ -156,3 +156,7 @@ export const StatsIcon = styled.div(() => [
 ]);
 
 export const StatsContent = styled(Paper)(() => [tw`rounded-lg shadow-none`]);
+
+export const StyledFullPageLoader = styled.div(() => [
+    tw`h-screen w-full flex justify-center items-center bg-white`,
+]);

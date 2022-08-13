@@ -5,16 +5,21 @@ import {
     Toolbar,
     Typography,
 } from "@mui/material";
-import { ReactElement, useState } from "react";
-import { FaBars } from "react-icons/fa";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { ReactElement, useEffect, useState } from "react";
+import { FaBars, FaSignOutAlt } from "react-icons/fa";
 import StudentMenu from "../components/student-dashboard/menu";
 import {
     DashboardContainer,
     DashboardMainSection,
     SideBar,
     StyledAppBar,
+    StyledButton,
     StyledContentBox,
 } from "../components/styled";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { removeUser } from "../store/slice/user-slice";
 
 type Props = {
     children: ReactElement;
@@ -22,23 +27,35 @@ type Props = {
 
 const StudentDashboardLayout = ({ children }: Props) => {
     const [showSidebar, setShowSidebar] = useState(true);
+    const { data: user } = useAppSelector((state) => state.user);
+    const router = useRouter();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (!user.isLoggedIn) {
+            router.push("/login");
+        }
+    }, [user]);
+
     return (
         <DashboardContainer>
             <SideBar show={showSidebar}>
-                <Toolbar>
-                    <Typography variant="h6" noWrap>
-                        CDSA365
-                    </Typography>
-                </Toolbar>
+                <Link href={"/"}>
+                    <Toolbar className="cursor-pointer">
+                        <Typography variant="h6" noWrap>
+                            CDSA365
+                        </Typography>
+                    </Toolbar>
+                </Link>
                 <Divider />
                 <StudentMenu />
             </SideBar>
-            <DashboardMainSection sidebarVisible={showSidebar}>
+            <DashboardMainSection sidebarvisible={showSidebar}>
                 <StyledAppBar
                     position="fixed"
                     color="default"
                     elevation={0}
-                    sidebarVisible={showSidebar}
+                    sidebarvisible={showSidebar}
                 >
                     <Toolbar>
                         <IconButton
@@ -58,7 +75,15 @@ const StudentDashboardLayout = ({ children }: Props) => {
                         >
                             News
                         </Typography>
-                        <Avatar />
+                        {user.isLoggedIn && (
+                            <StyledButton
+                                startIcon={<FaSignOutAlt />}
+                                color="error"
+                                onClick={() => dispatch(removeUser())}
+                            >
+                                Logout
+                            </StyledButton>
+                        )}
                     </Toolbar>
                 </StyledAppBar>
                 <StyledContentBox className="p-4">{children}</StyledContentBox>

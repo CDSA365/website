@@ -4,14 +4,15 @@ import { Container } from "@mui/system";
 import axios from "axios";
 import { NextPage } from "next";
 import Link from "next/link";
-import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, useEffect, useState } from "react";
 import { FaPen, FaSignInAlt } from "react-icons/fa";
-import { useDispatch } from "react-redux";
 import PageHeading from "../../components/pageHeader";
 import Spinner from "../../components/spinner";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addUser } from "../../store/slice/user-slice";
 
 type Props = {};
@@ -22,7 +23,9 @@ type FormData = {
 };
 
 const LoginPage: NextPage = (props: Props) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+    const { data: user } = useAppSelector((state) => state.user);
     const [isLoading, setIsLoading] = useState(false);
     const [errorFields, setErrorFields] = useState<string[]>([]);
     const [formData, setFormData] = useState<FormData>({
@@ -52,11 +55,18 @@ const LoginPage: NextPage = (props: Props) => {
                 .then(({ data }) => {
                     dispatch(addUser({ ...data, isLoggedIn: true }));
                     setFormData({ email: "", password: "" });
+                    router.push("/dashboard");
                 })
                 .catch((err) => console.log(err))
                 .finally(() => setIsLoading(false));
         }
     };
+
+    useEffect(() => {
+        if (user.isLoggedIn) {
+            router.push("/dashboard");
+        }
+    }, []);
 
     return (
         <StandardLayout {...props}>

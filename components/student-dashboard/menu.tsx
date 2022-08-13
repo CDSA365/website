@@ -114,7 +114,7 @@ const StudentMenu: FC<Props> = (props) => {
                         }
                     >
                         {item.items.map((menu, key) => (
-                            <Link href={menu.link}>
+                            <Link href={menu.link} key={key}>
                                 <ListItemButton
                                     key={key}
                                     selected={
