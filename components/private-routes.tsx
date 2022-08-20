@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { FC, ReactElement, useContext, useEffect, useState } from "react";
-import { useAppSelector } from "../store/hooks";
+import { AuthContext } from "../context/auth-context";
 import FullPageLoader from "./full-page-loader";
 
 type Props = {
@@ -10,25 +10,32 @@ type Props = {
 
 const PrivateRoutes: FC<Props> = ({ protectedRoutes, children }) => {
     const router = useRouter();
-    const { data: user } = useAppSelector((state) => state.user);
+    const auth = useContext(AuthContext);
     const [loading, setLoading] = useState(true);
 
     const isProtected = protectedRoutes.indexOf(router.pathname) !== -1;
 
     useEffect(() => {
-        if (!user.isLoggedIn && isProtected) {
-            router.push("/login");
+        console.log(auth?.authenticated);
+        setLoading(true);
+        if (isProtected) {
+            if (!auth?.authenticated) {
+                setTimeout(() => {
+                    router.push("/login").then(() => setLoading(false));
+                }, 1000);
+            } else {
+                setLoading(false);
+            }
+        } else {
+            setLoading(false);
         }
-        setLoading(false);
-    }, []);
-
-    useEffect(() => {}, [router.pathname]);
+    }, [router.pathname, auth?.authenticated]);
 
     if (loading) {
         return <FullPageLoader />;
+    } else {
+        return children;
     }
-
-    return children;
 };
 
 export default PrivateRoutes;

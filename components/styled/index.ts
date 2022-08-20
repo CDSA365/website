@@ -1,4 +1,4 @@
-import { AppBar, Button, Drawer, Paper, Toolbar } from "@mui/material";
+import { AppBar, Avatar, Button, Drawer, Paper, Toolbar } from "@mui/material";
 import { Box } from "@mui/system";
 import tw, { styled } from "twin.macro";
 
@@ -159,4 +159,24 @@ export const StatsContent = styled(Paper)(() => [tw`rounded-lg shadow-none`]);
 
 export const StyledFullPageLoader = styled.div(() => [
     tw`h-screen w-full flex justify-center items-center bg-white`,
+]);
+
+export const StyledProfilePaper = styled(Paper)(() => [
+    tw`overflow-hidden relative`,
+]);
+
+export const StyledProfileHeader = styled.div(() => [
+    tw`h-40 bg-gradient-to-r from-cyan-500 to-blue-500 relative clear-both`,
+]);
+
+export const StyledProfileAvatarContainer = styled.div(() => [
+    tw`relative flex justify-center clear-both mb-[60px]`,
+]);
+
+export const StyledProfileAvatar = styled(Avatar)(() => [
+    tw`-top-12 shadow-lg absolute`,
+]);
+
+export const StyledProfileDataContainer = styled.div(() => [
+    tw`p-3 flex flex-col justify-center`,
 ]);

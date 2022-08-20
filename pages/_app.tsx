@@ -7,6 +7,7 @@ import store, { wrapper, persistor } from "../store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import PrivateRoutes from "../components/private-routes";
+import { AuthProvider } from "../context/auth-context";
 
 function MyApp({ Component, pageProps }: AppProps) {
     const protectedRoutes = ["/dashboard"];
@@ -14,9 +15,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <CacheProvider value={cache}>
             <Provider store={store}>
                 <PersistGate persistor={persistor} loading={null}>
-                    <PrivateRoutes protectedRoutes={protectedRoutes}>
-                        <Component {...pageProps} />
-                    </PrivateRoutes>
+                    <AuthProvider>
+                        <PrivateRoutes protectedRoutes={protectedRoutes}>
+                            <Component {...pageProps} />
+                        </PrivateRoutes>
+                    </AuthProvider>
                 </PersistGate>
             </Provider>
         </CacheProvider>

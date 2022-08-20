@@ -20,6 +20,8 @@
         "framer-motion": "^6.5.1",
         "immutable": "^4.1.0",
         "install": "^0.13.0",
+        "moment": "^2.29.4",
+        "moment-timezone": "^0.5.34",
         "next": "latest",
         "next-redux-wrapper": "^7.0.5",
         "react": "18.1.0",

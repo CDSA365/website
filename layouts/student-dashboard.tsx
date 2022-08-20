@@ -1,13 +1,6 @@
-import {
-    Avatar,
-    Divider,
-    IconButton,
-    Toolbar,
-    Typography,
-} from "@mui/material";
+import { Divider, IconButton, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { ReactElement, useEffect, useState } from "react";
+import { FC, ReactElement, useContext, useState } from "react";
 import { FaBars, FaSignOutAlt } from "react-icons/fa";
 import StudentMenu from "../components/student-dashboard/menu";
 import {
@@ -18,24 +11,18 @@ import {
     StyledButton,
     StyledContentBox,
 } from "../components/styled";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { removeUser } from "../store/slice/user-slice";
+import { AuthContext } from "../context/auth-context";
+import { useAppSelector } from "../store/hooks";
 
 type Props = {
     children: ReactElement;
+    title?: string;
 };
 
-const StudentDashboardLayout = ({ children }: Props) => {
+const StudentDashboardLayout: FC<Props> = ({ title, children }) => {
     const [showSidebar, setShowSidebar] = useState(true);
     const { data: user } = useAppSelector((state) => state.user);
-    const router = useRouter();
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        if (!user.isLoggedIn) {
-            router.push("/login");
-        }
-    }, [user]);
+    const auth = useContext(AuthContext);
 
     return (
         <DashboardContainer>
@@ -73,13 +60,13 @@ const StudentDashboardLayout = ({ children }: Props) => {
                             component="div"
                             sx={{ flexGrow: 1 }}
                         >
-                            News
+                            {title}
                         </Typography>
                         {user.isLoggedIn && (
                             <StyledButton
                                 startIcon={<FaSignOutAlt />}
                                 color="error"
-                                onClick={() => dispatch(removeUser())}
+                                onClick={() => auth?.logout()}
                             >
                                 Logout
                             </StyledButton>
@@ -90,6 +77,10 @@ const StudentDashboardLayout = ({ children }: Props) => {
             </DashboardMainSection>
         </DashboardContainer>
     );
+};
+
+StudentDashboardLayout.defaultProps = {
+    title: "Dashboard",
 };
 
 export default StudentDashboardLayout;
