@@ -125,6 +125,7 @@ const ProfilePage: NextPage = (props: Props) => {
                         <div className="w-full flex space-x-6">
                             <div className="w-1/2">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="First Name"
                                     value={user.first_name || ""}
@@ -132,6 +133,7 @@ const ProfilePage: NextPage = (props: Props) => {
                             </div>
                             <div className="w-1/2">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="Last Name"
                                     value={user.last_name || ""}
@@ -141,6 +143,7 @@ const ProfilePage: NextPage = (props: Props) => {
                         <div className="w-full flex space-x-6">
                             <div className="w-1/3">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="Address Line One"
                                     value={user.address_one || ""}
@@ -148,6 +151,7 @@ const ProfilePage: NextPage = (props: Props) => {
                             </div>
                             <div className="w-1/3">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="Address Line Two"
                                     value={user.address_two || ""}
@@ -155,6 +159,7 @@ const ProfilePage: NextPage = (props: Props) => {
                             </div>
                             <div className="w-1/3">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="City"
                                     value={user.city || ""}
@@ -164,6 +169,7 @@ const ProfilePage: NextPage = (props: Props) => {
                         <div className="w-full flex space-x-6">
                             <div className="w-1/3">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="District"
                                     value={user.district || ""}
@@ -171,6 +177,7 @@ const ProfilePage: NextPage = (props: Props) => {
                             </div>
                             <div className="w-1/3">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="State"
                                     value={user.state || ""}
@@ -178,6 +185,7 @@ const ProfilePage: NextPage = (props: Props) => {
                             </div>
                             <div className="w-1/3">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="Pincode"
                                     value={user.pincode || ""}
@@ -198,6 +206,7 @@ const ProfilePage: NextPage = (props: Props) => {
                         <div className="w-full flex space-x-6">
                             <div className="w-1/2">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="Current Password"
                                     type="password"
@@ -206,6 +215,7 @@ const ProfilePage: NextPage = (props: Props) => {
                             </div>
                             <div className="w-1/2">
                                 <Input
+                                    readOnly
                                     size="lg"
                                     label="New Password"
                                     type="password"

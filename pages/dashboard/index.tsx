@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { IconButton, List, ListItem, ListItemText } from "@mui/material";
 import { FaArrowRight, FaCheck, FaClock, FaSpinner } from "react-icons/fa";
 import {
@@ -10,10 +10,51 @@ import {
     StyledButton,
 } from "../../components/styled";
 import DashboardLayout from "../../layouts/student-dashboard";
+import axios from "axios";
+import { config } from "../../config/config";
+import { useAppSelector } from "../../store/hooks";
+import Link from "next/link";
+import ClassListDetails from "../../components/class-list-details";
 
 type Props = {};
 
 const DashboardHome: FC<Props> = (props: Props) => {
+    const [classes, setClasses] = useState<any[]>([]);
+    const [scheduledClasses, setScheduledClasses] = useState<any[]>([]);
+    const [inprogressClasses, setInprogressClasses] = useState<any[]>([]);
+    const [completedClasses, setCompletedClasses] = useState<any[]>([]);
+
+    const {
+        data: { id },
+    } = useAppSelector((state) => state.user);
+
+    useEffect(() => {
+        function getClasses() {
+            axios
+                .get(config.api.getStudentClasses + `/${id}`)
+                .then(({ data }) => {
+                    setClasses(data);
+                });
+        }
+        getClasses();
+    }, []);
+
+    useEffect(() => {
+        const scheduled = classes.filter(
+            (x) => x.progress_state === "SCHEDULED"
+        );
+        const inprogress = classes.filter(
+            (x) => x.progress_state === "INPROGRESS"
+        );
+        const completed = classes.filter(
+            (x) => x.progress_state === "COMPLETED"
+        );
+        console.log("scheduled classes", scheduled);
+        setScheduledClasses(scheduled.slice(0, 7));
+        setInprogressClasses(inprogress.slice(0, 7));
+        setCompletedClasses(completed.slice(0, 7));
+    }, [classes]);
+
     return (
         <DashboardLayout>
             <div className="">
@@ -31,26 +72,35 @@ const DashboardHome: FC<Props> = (props: Props) => {
                         </StatsToolbar>
                         <StatsContent>
                             <List>
-                                {[...Array(6)].map((_, key) => (
+                                {scheduledClasses.map((item, key) => (
                                     <ListItem
                                         alignItems="flex-start"
                                         key={key}
                                         divider
                                         secondaryAction={
-                                            <IconButton
-                                                edge="end"
-                                                aria-label="view"
-                                                size="small"
-                                                color="default"
+                                            <Link
+                                                href={`/dashboard/classes/${item.slug}`}
                                             >
-                                                <FaArrowRight />
-                                            </IconButton>
+                                                <IconButton
+                                                    edge="end"
+                                                    aria-label="view"
+                                                    size="small"
+                                                    color="default"
+                                                >
+                                                    <FaArrowRight />
+                                                </IconButton>
+                                            </Link>
                                         }
                                         className="last:border-0"
                                     >
                                         <ListItemText
-                                            primary="List item one"
-                                            secondary="I'll be in your neighborhood doing errands this"
+                                            primary={item.title}
+                                            secondary={
+                                                <ClassListDetails
+                                                    trainer={item.trainer_name}
+                                                    start={item.start_time}
+                                                />
+                                            }
                                         />
                                     </ListItem>
                                 ))}
@@ -73,7 +123,7 @@ const DashboardHome: FC<Props> = (props: Props) => {
                         </StatsToolbar>
                         <StatsContent>
                             <List>
-                                {[...Array(6)].map((_, key) => (
+                                {inprogressClasses.map((_, key) => (
                                     <ListItem
                                         alignItems="flex-start"
                                         key={key}
@@ -115,7 +165,7 @@ const DashboardHome: FC<Props> = (props: Props) => {
                         </StatsToolbar>
                         <StatsContent>
                             <List>
-                                {[...Array(6)].map((_, key) => (
+                                {completedClasses.map((_, key) => (
                                     <ListItem
                                         alignItems="flex-start"
                                         key={key}
@@ -149,5 +199,7 @@ const DashboardHome: FC<Props> = (props: Props) => {
         </DashboardLayout>
     );
 };
+
+// export async function getServerSideProps() {}
 
 export default DashboardHome;

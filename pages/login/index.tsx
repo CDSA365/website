@@ -55,7 +55,7 @@ const LoginPage: NextPage = (props: Props) => {
                 .then(({ data }) => {
                     dispatch(addUser({ ...data, isLoggedIn: true }));
                     setFormData({ email: "", password: "" });
-                    router.push("/dashboard");
+                    router.push(`/dashboard?u=${data.id}`);
                 })
                 .catch((err) => console.log(err))
                 .finally(() => setIsLoading(false));
