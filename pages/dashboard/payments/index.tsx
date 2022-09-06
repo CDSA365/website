@@ -39,7 +39,7 @@ const PaymentsPage: NextPage = (props: Props) => {
                     <div className="prose">
                         <div className="bg-white p-2 border-dashed border-gray-500 border-2 rounded">
                             <Image
-                                src={"../images/UPIQR.png"}
+                                src={"../../images/UPIQR.png"}
                                 alt="Carpe Diem Skills Academy - UPI QR CODE"
                                 layout="responsive"
                                 width={258}
