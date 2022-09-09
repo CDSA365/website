@@ -1,6 +1,8 @@
 import { createContext, FC, ReactElement, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { removeUser } from "../store/slice/user-slice";
+import _ from "lodash";
+import { useRouter } from "next/router";
 
 type Props = {
     children: ReactElement;
@@ -22,12 +24,17 @@ const AuthProvider: FC<Props> = ({ children }) => {
     const [user, setUser] = useState({});
     const { data: userData } = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
+    const router = useRouter();
 
     const logout = () => dispatch(removeUser());
 
     useEffect(() => {
-        setAuthenticated(userData.isLoggedIn === true);
-        setUser({ ...userData });
+        if (_.isEmpty(userData)) {
+            router.push("/login");
+        } else {
+            setAuthenticated(userData.isLoggedIn === true);
+            setUser({ ...userData });
+        }
     }, [userData]);
 
     return (

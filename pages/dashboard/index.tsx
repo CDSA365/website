@@ -15,6 +15,7 @@ import { config } from "../../config/config";
 import { useAppSelector } from "../../store/hooks";
 import Link from "next/link";
 import ClassListDetails from "../../components/class-list-details";
+import { useRouter } from "next/router";
 
 type Props = {};
 
@@ -23,10 +24,9 @@ const DashboardHome: FC<Props> = (props: Props) => {
     const [scheduledClasses, setScheduledClasses] = useState<any[]>([]);
     const [inprogressClasses, setInprogressClasses] = useState<any[]>([]);
     const [completedClasses, setCompletedClasses] = useState<any[]>([]);
-
-    const {
-        data: { id },
-    } = useAppSelector((state) => state.user);
+    const { data } = useAppSelector((state) => state.user);
+    const { id } = data;
+    const router = useRouter();
 
     useEffect(() => {
         function getClasses() {
@@ -49,7 +49,6 @@ const DashboardHome: FC<Props> = (props: Props) => {
         const completed = classes.filter(
             (x) => x.progress_state === "COMPLETED"
         );
-        console.log("scheduled classes", scheduled);
         setScheduledClasses(scheduled.slice(0, 7));
         setInprogressClasses(inprogress.slice(0, 7));
         setCompletedClasses(completed.slice(0, 7));
