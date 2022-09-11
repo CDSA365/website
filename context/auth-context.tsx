@@ -29,7 +29,7 @@ const AuthProvider: FC<Props> = ({ children }) => {
     const logout = () => dispatch(removeUser());
 
     useEffect(() => {
-        if (_.isEmpty(userData)) {
+        if (_.isEmpty(userData) && router.pathname.includes("/dashboard")) {
             router.push("/login");
         } else {
             setAuthenticated(userData.isLoggedIn === true);
