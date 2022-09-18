@@ -6,19 +6,15 @@ import { cache } from "@emotion/css";
 import store, { wrapper, persistor } from "../store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import PrivateRoutes from "../components/private-routes";
 import { AuthProvider } from "../context/auth-context";
 
 function MyApp({ Component, pageProps }: AppProps) {
-    const protectedRoutes = ["/dashboard"];
     return (
         <CacheProvider value={cache}>
             <Provider store={store}>
                 <PersistGate persistor={persistor} loading={null}>
                     <AuthProvider>
-                        <PrivateRoutes protectedRoutes={protectedRoutes}>
-                            <Component {...pageProps} />
-                        </PrivateRoutes>
+                        <Component {...pageProps} />
                     </AuthProvider>
                 </PersistGate>
             </Provider>

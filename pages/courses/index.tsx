@@ -2,11 +2,9 @@ import { FC } from "react";
 import { Container } from "@mui/system";
 import Image from "next/image";
 import {
-    CTASection,
     GridRowDouble,
     GridRowTriple,
     MainSection,
-    PageHeader,
 } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
 import { motion } from "framer-motion";
@@ -48,12 +46,12 @@ const courses = [
 ];
 
 const coursesImages = [
-    "/images/courses-image-1.jpg",
-    "/images/pattern.png",
-    "/images/pattern.png",
-    "/images/courses-image-2.jpg",
-    "/images/courses-image-3.jpg",
-    "/images/pattern.png",
+    "../images/courses-image-1.jpg",
+    "../images/pattern.png",
+    "../images/pattern.png",
+    "../images/courses-image-2.jpg",
+    "../images/courses-image-3.jpg",
+    "../images/pattern.png",
 ];
 
 const CoursesPage: FC = (props: Props) => {
@@ -184,7 +182,7 @@ const CoursesPage: FC = (props: Props) => {
                                             whileInView={Reveal.onscreen}
                                         >
                                             <Image
-                                                src={"/images/kids.jpg"}
+                                                src={"../images/kids.jpg"}
                                                 width={300}
                                                 height={200}
                                                 layout="responsive"
@@ -223,7 +221,7 @@ const CoursesPage: FC = (props: Props) => {
                                             whileInView={Reveal.onscreen}
                                         >
                                             <Image
-                                                src={"/images/mission.jpg"}
+                                                src={"../images/mission.jpg"}
                                                 width={300}
                                                 height={200}
                                                 layout="responsive"

@@ -61,7 +61,7 @@ const AboutPage: FC = (props: Props) => {
                                     whileInView={Reveal.onscreen}
                                 >
                                     <Image
-                                        src={"/images/pattern-2.png"}
+                                        src={"../images/pattern-2.png"}
                                         width={400}
                                         height={400}
                                     />

@@ -18,6 +18,7 @@ import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { Reveal } from "../helpers/animations";
 import CallToAction from "../components/cta";
+import RequestDemoButton from "../components/requestDemoButton";
 
 const Home: NextPage = () => {
     return (
@@ -38,14 +39,7 @@ const Home: NextPage = () => {
                                 confidence.
                             </p>
                             <div className="flex relative">
-                                <StyledButton
-                                    variant="contained"
-                                    color="error"
-                                    size="large"
-                                    className="relative inline-flex"
-                                >
-                                    <FaBullhorn /> Request a demo
-                                </StyledButton>
+                                <RequestDemoButton />
                             </div>
                         </HeroCTA>
                         <motion.div
@@ -113,7 +107,7 @@ const Home: NextPage = () => {
                         <motion.div
                             initial={Reveal.offscreen}
                             whileInView={Reveal.onscreen}
-                            viewport={{ amount: 0.8 }}
+                            viewport={{ amount: 0.5 }}
                         >
                             <div className="my-4 md:my-0 flex flex-col justify-center items-center">
                                 <Image
@@ -276,13 +270,7 @@ const Home: NextPage = () => {
                                 </FeatureBoxItem>
                             </ul>
                             <div className="flex justify-center py-12">
-                                <StyledButton
-                                    color="secondary"
-                                    variant="contained"
-                                    size="large"
-                                >
-                                    <FaBullhorn /> Request a demo
-                                </StyledButton>
+                                <RequestDemoButton color="secondary" />
                             </div>
                         </div>
                     </div>
