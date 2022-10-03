@@ -29,7 +29,7 @@ type AppbarType = {
 };
 
 export const StyledHeader = styled.div(() => [
-    tw`flex flex-row w-full px-6 h-24 border-b items-center sticky`,
+    tw`flex flex-row w-full px-6 h-24 border-b items-center sticky justify-between`,
 ]);
 
 export const StyledFooter = styled.div(() => [

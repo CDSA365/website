@@ -98,7 +98,7 @@ const CoursesPage: FC = (props: Props) => {
                         <GridRowDouble>
                             {coursesImages.map((image, key) => (
                                 <div
-                                    className="rounded-lg overflow-hidden relative"
+                                    className="rounded-lg overflow-hidden relative hidden md:block"
                                     key={key}
                                 >
                                     <motion.div

@@ -13,7 +13,7 @@ import {
     StyledHeroSection,
 } from "../components/styled";
 import StandardLayout from "../layouts/standard";
-import { FaArrowRight, FaBullhorn, FaRegComment, FaStar } from "react-icons/fa";
+import { FaArrowRight, FaRegComment, FaStar } from "react-icons/fa";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { Reveal } from "../helpers/animations";
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
                                 reach their full potential and communicate with
                                 confidence.
                             </p>
-                            <div className="flex relative">
+                            <div className="flex relative justify-center md:justify-start">
                                 <RequestDemoButton />
                             </div>
                         </HeroCTA>
