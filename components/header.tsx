@@ -101,7 +101,7 @@ const Header = (props: Props) => {
                     </div>
                     <List>
                         {navItems.map((item, key) => (
-                            <Link href={`/${item.link}`}>
+                            <Link href={`/${item.link}`} key={key}>
                                 <ListItem key={key} sx={{ padding: 0 }}>
                                     <ListItemButton>
                                         <ListItemIcon>
@@ -112,7 +112,7 @@ const Header = (props: Props) => {
                                 </ListItem>
                             </Link>
                         ))}
-                        <Link href={`/`}>
+                        <Link href="https://student.cdsa365.com">
                             <ListItem sx={{ padding: 0 }}>
                                 <ListItemButton>
                                     <ListItemIcon>
