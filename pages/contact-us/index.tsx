@@ -1,4 +1,6 @@
 import { Container } from "@mui/system";
+import axios from "axios";
+import { useState } from "react";
 import {
     FaClock,
     FaEnvelope,
@@ -6,17 +8,76 @@ import {
     FaPhoneAlt,
 } from "react-icons/fa";
 import PageHeading from "../../components/pageHeader";
+import Spinner from "../../components/spinner";
 import {
     GridRowDouble,
     InputStyled,
     StyledButton,
     StyledTextArea,
 } from "../../components/styled";
+import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
 
 type Props = {};
 
+interface FormData {
+    first_name: string;
+    last_name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
+const initialState: FormData = {
+    first_name: "",
+    last_name: "",
+    email: "",
+    subject: "",
+    message: "",
+};
+
 const ContactUsPage = (props: Props) => {
+    const [formData, setFormData] = useState<FormData>(initialState);
+    const [errorMessage, setErrorMessage] = useState<string>("");
+    const [successMessage, setSuccessMessage] = useState<string>("");
+    const [loading, setLoading] = useState(false);
+
+    const handleFormChange = (e: any) => {
+        const { name, value } = e.target;
+        setFormData((state) => ({ ...state, [name]: value }));
+    };
+
+    const validateForm = (formData: FormData) => {
+        let errorCount = 0;
+        Object.values(formData).forEach((value) => {
+            if (value === "" || value.length === 0) errorCount += 1;
+        });
+        return errorCount === 0;
+    };
+
+    const handleSubmit = () => {
+        setLoading(true);
+        if (validateForm(formData)) {
+            axios
+                .post(config.api.sendContactForm, formData)
+                .then(() => setFormData(initialState))
+                .then(() => {
+                    const message = `Thanks for contacting us. We received your request.`;
+                    if (errorMessage) setErrorMessage("");
+                    setSuccessMessage(message);
+                })
+                .catch((err) => {
+                    if (successMessage) setSuccessMessage("");
+                    setErrorMessage(err.message);
+                })
+                .finally(() => setLoading(false));
+        } else {
+            if (successMessage) setSuccessMessage("");
+            setErrorMessage("Please fill all the fields");
+            setLoading(false);
+        }
+    };
+
     return (
         <StandardLayout>
             <PageHeading title="Contact Us" />
@@ -104,22 +165,59 @@ const ContactUsPage = (props: Props) => {
                                     </h2>
                                 </div>
                                 <div className="form space-y-4">
-                                    <InputStyled placeholder="First Name" />
-                                    <InputStyled placeholder="Last Name" />
-                                    <InputStyled placeholder="Email" />
-                                    <InputStyled placeholder="Subject" />
+                                    <InputStyled
+                                        name="first_name"
+                                        value={formData.first_name || ""}
+                                        placeholder="First Name"
+                                        onChange={handleFormChange}
+                                    />
+                                    <InputStyled
+                                        name="last_name"
+                                        value={formData.last_name || ""}
+                                        placeholder="Last Name"
+                                        onChange={handleFormChange}
+                                    />
+                                    <InputStyled
+                                        name="email"
+                                        value={formData.email || ""}
+                                        placeholder="Email"
+                                        onChange={handleFormChange}
+                                    />
+                                    <InputStyled
+                                        name="subject"
+                                        value={formData.subject || ""}
+                                        placeholder="Subject"
+                                        onChange={handleFormChange}
+                                    />
                                     <StyledTextArea
+                                        name="message"
+                                        value={formData.message || ""}
                                         placeholder="Message"
+                                        onChange={handleFormChange}
                                         rows={7}
                                     />
                                 </div>
-                                <StyledButton
-                                    variant="contained"
-                                    size="large"
-                                    shade="light"
-                                >
-                                    Submit
-                                </StyledButton>
+                                <div className="flex justify-start gap-3 items-center">
+                                    <StyledButton
+                                        variant="contained"
+                                        size="large"
+                                        shade="light"
+                                        onClick={handleSubmit}
+                                        startIcon={loading && <Spinner />}
+                                    >
+                                        Submit
+                                    </StyledButton>
+                                    {errorMessage && (
+                                        <p className="text-white">
+                                            {errorMessage}
+                                        </p>
+                                    )}
+                                    {successMessage && (
+                                        <p className="text-white">
+                                            {successMessage}
+                                        </p>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </GridRowDouble>
