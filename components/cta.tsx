@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import Link from "next/link";
 import { FC } from "react";
 import { FaBullhorn, FaPenNib } from "react-icons/fa";
 import RequestDemoButton from "./requestDemoButton";
@@ -23,9 +24,15 @@ const CallToAction: FC = (props: Props) => {
                 </div>
                 <div className="flex items-center justify-center my-6 gap-6">
                     <RequestDemoButton />
-                    <StyledButton color="error" size="large" variant="outlined">
-                        <FaPenNib /> Enroll now
-                    </StyledButton>
+                    <Link href={"/enroll"}>
+                        <StyledButton
+                            color="error"
+                            size="large"
+                            variant="outlined"
+                        >
+                            <FaPenNib /> Enroll now
+                        </StyledButton>
+                    </Link>
                 </div>
             </Container>
         </CTASection>
