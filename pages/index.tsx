@@ -95,13 +95,6 @@ const Home: NextPage = () => {
                                         incididunt ut labore et dolore.
                                     </p>
                                 </div>
-                                <StyledButton
-                                    variant="contained"
-                                    size="large"
-                                    color="error"
-                                >
-                                    View more <FaArrowRight />
-                                </StyledButton>
                             </div>
                         </motion.div>
                         <motion.div
@@ -127,13 +120,6 @@ const Home: NextPage = () => {
                                         incididunt ut labore et dolore.
                                     </p>
                                 </div>
-                                <StyledButton
-                                    variant="contained"
-                                    size="large"
-                                    color="error"
-                                >
-                                    View more <FaArrowRight />
-                                </StyledButton>
                             </div>
                         </motion.div>
                     </GridRowDouble>

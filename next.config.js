@@ -6,4 +6,10 @@ module.exports = {
         loader: "akamai",
         path: "",
     },
+    webpack: (config, { isServer }) => {
+        if (isServer) {
+            require("./scripts/sitemap-generator");
+        }
+        return config;
+    },
 };

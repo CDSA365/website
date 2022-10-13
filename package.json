@@ -19,6 +19,7 @@
         "axios": "^0.27.2",
         "env-cmd": "^10.1.0",
         "framer-motion": "^6.5.1",
+        "globby": "^11.0.1",
         "immutable": "^4.1.0",
         "install": "^0.13.0",
         "lodash": "^4.17.21",
