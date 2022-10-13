@@ -16,6 +16,12 @@
         "incremental": true,
         "jsxImportSource": "@emotion/react"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "types",
+        "scripts/sitemap-generator.js"
+    ],
     "exclude": ["node_modules"]
 }
