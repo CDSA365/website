@@ -20,7 +20,7 @@ interface Props extends ISEOProps {}
 
 const AboutPage: FC = (props: Props) => {
     return (
-        <StandardLayout title="About us" description="" keyword="" {...props}>
+        <StandardLayout {...props}>
             <PageHeading title="About Us" />
             <MainSection>
                 {/* INTRO */}
@@ -178,5 +178,15 @@ const AboutPage: FC = (props: Props) => {
         </StandardLayout>
     );
 };
+
+export async function getStaticProps() {
+    return {
+        props: {
+            title: "About us - Carpe Diem Skills Academy",
+            description: "",
+            keyword: "",
+        },
+    };
+}
 
 export default AboutPage;

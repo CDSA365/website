@@ -23,12 +23,7 @@ type Props = {};
 
 const Home: FC = (props: Props) => {
     return (
-        <StandardLayout
-            title="Carpe Diem Skills Academy - www.cdsa365.com"
-            description=""
-            keyword=""
-            {...props}
-        >
+        <StandardLayout {...props}>
             {/* HERO SECTION */}
             <StyledHeroSection>
                 <Container className="flex items-center">
@@ -306,5 +301,15 @@ const Home: FC = (props: Props) => {
         </StandardLayout>
     );
 };
+
+export async function getStaticProps() {
+    return {
+        props: {
+            title: "Carpe Diem Skills Academy - www.cdsa365.com",
+            description: "",
+            keyword: "",
+        },
+    };
+}
 
 export default Home;

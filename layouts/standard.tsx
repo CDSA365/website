@@ -19,7 +19,7 @@ const StandardLayout: FC<Props> = ({
     ...props
 }) => {
     return (
-        <div {...props}>
+        <>
             <Head>
                 <title>{title}</title>
                 <meta name="description" content={description} />
@@ -28,7 +28,7 @@ const StandardLayout: FC<Props> = ({
             <Header />
             {children}
             <Footer />
-        </div>
+        </>
     );
 };
 

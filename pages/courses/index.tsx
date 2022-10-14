@@ -56,12 +56,7 @@ const coursesImages = [
 
 const CoursesPage: FC = (props: Props) => {
     return (
-        <StandardLayout
-            title="Courses - Carpe Diem Skills Academy"
-            description=""
-            keyword=""
-            {...props}
-        >
+        <StandardLayout {...props}>
             <PageHeading title="Courses" />
             <MainSection>
                 <Container className="pb-24">
@@ -263,5 +258,15 @@ const CoursesPage: FC = (props: Props) => {
         </StandardLayout>
     );
 };
+
+export async function getStaticProps() {
+    return {
+        props: {
+            title: "Courses - Carpe Diem Skills Academy",
+            description: "",
+            keyword: "",
+        },
+    };
+}
 
 export default CoursesPage;

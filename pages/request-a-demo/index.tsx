@@ -77,12 +77,7 @@ const RequestDemo: FC = (props: Props) => {
     };
 
     return (
-        <StandardLayout
-            title="Request a demo - Carpe Diem Skills Academy"
-            description=""
-            keyword=""
-            {...props}
-        >
+        <StandardLayout {...props}>
             <PageHeading title="Request a Demo" />
             <MainSection className="pb-12 md:pb-24">
                 <Container>
@@ -190,5 +185,15 @@ const RequestDemo: FC = (props: Props) => {
         </StandardLayout>
     );
 };
+
+export async function getStaticProps() {
+    return {
+        props: {
+            title: "Request a demo - Carpe Diem Skills Academy",
+            description: "",
+            keyword: "",
+        },
+    };
+}
 
 export default RequestDemo;

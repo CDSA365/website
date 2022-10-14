@@ -8,12 +8,7 @@ type Props = {};
 
 const TermsPage: FC = (props: Props) => {
     return (
-        <StandardLayout
-            title="Terms &amp; Conditions - Carpe Diem Skills Academy"
-            description=""
-            keyword=""
-            {...props}
-        >
+        <StandardLayout {...props}>
             <PageHeading title="Terms &amp; Conditions" />
             <MainSection>
                 <div className="prose mx-auto max-w-3xl space-y-6 pb-12 md:pb-24">
@@ -428,5 +423,15 @@ const TermsPage: FC = (props: Props) => {
         </StandardLayout>
     );
 };
+
+export async function getStaticProps() {
+    return {
+        props: {
+            title: "Terms and Conditions - Carpe Diem Skills Academy",
+            description: "",
+            keyword: "",
+        },
+    };
+}
 
 export default TermsPage;

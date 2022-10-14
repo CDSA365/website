@@ -79,12 +79,7 @@ const ContactUsPage: FC<Props> = (props) => {
     };
 
     return (
-        <StandardLayout
-            title="Contact us - Carpe Diem Skills Academy"
-            description=""
-            keyword=""
-            {...props}
-        >
+        <StandardLayout {...props}>
             <PageHeading title="Contact Us" />
             <section className="bg-white py-12 md:py-24">
                 <Container>
@@ -231,5 +226,15 @@ const ContactUsPage: FC<Props> = (props) => {
         </StandardLayout>
     );
 };
+
+export async function getStaticProps() {
+    return {
+        props: {
+            title: "Contact us - Carpe Diem Skills Academy",
+            description: "",
+            keyword: "",
+        },
+    };
+}
 
 export default ContactUsPage;
