@@ -20,9 +20,11 @@ import { Reveal } from "../helpers/animations";
 import CallToAction from "../components/cta";
 import RequestDemoButton from "../components/requestDemoButton";
 
-const Home: NextPage = () => {
+type Props = {};
+
+const Home: NextPage = (props: Props) => {
     return (
-        <StandardLayout>
+        <StandardLayout {...props}>
             {/* HERO SECTION */}
             <StyledHeroSection>
                 <Container className="flex items-center">
@@ -299,6 +301,10 @@ const Home: NextPage = () => {
             <CallToAction />
         </StandardLayout>
     );
+};
+
+Home.defaultProps = {
+    title: "Carpe Diem Skills Academy - www.cdsa365.com",
 };
 
 export default Home;

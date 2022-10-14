@@ -276,4 +276,10 @@ const RegisterPage: NextPage = (props: Props) => {
     );
 };
 
+RegisterPage.defaultProps = {
+    title: "Register",
+    description: "",
+    keywords: "",
+};
+
 export default RegisterPage;

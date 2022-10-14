@@ -20,12 +20,12 @@ const StandardLayout: FC<Props> = ({
 }) => {
     return (
         <div {...props}>
-            {/* <Head>
+            <Head>
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <meta name="keywords" content={keyword} />
                 <link rel="icon" href="/favicon.ico" />
-            </Head> */}
+            </Head>
             <Header />
             {children}
             <Footer />
@@ -33,10 +33,10 @@ const StandardLayout: FC<Props> = ({
     );
 };
 
-// StandardLayout.defaultProps = {
-//     title: "Carpe Diem Skills Academy",
-//     description: "Carpe Diem Skills Academy",
-//     keyword: "Carpe Diem Skills Academy",
-// };
+StandardLayout.defaultProps = {
+    title: "Carpe Diem Skills Academy",
+    description: "Carpe Diem Skills Academy",
+    keyword: "Carpe Diem Skills Academy",
+};
 
 export default StandardLayout;

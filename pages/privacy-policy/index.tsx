@@ -68,6 +68,8 @@ const PrivacyPolicyPage: NextPage = (props: Props) => {
 
 PrivacyPolicyPage.defaultProps = {
     title: "Privacy Policy - Carpe Diem Skills Academy",
+    description: "",
+    keywords: "",
 };
 
 export default PrivacyPolicyPage;

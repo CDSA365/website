@@ -425,6 +425,8 @@ const TermsPage: NextPage = (props: Props) => {
 
 TermsPage.defaultProps = {
     title: "Terms & Conditions - Carpe Diem Skills Academy",
+    description: "",
+    keywords: "",
 };
 
 export default TermsPage;

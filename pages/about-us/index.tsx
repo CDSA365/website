@@ -14,8 +14,9 @@ import StandardLayout from "../../layouts/standard";
 import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
 import PageHeading from "../../components/pageHeader";
+import { ISEOProps } from "../../types/types";
 
-type Props = {};
+interface Props extends ISEOProps {}
 
 const AboutPage: FC = (props: Props) => {
     return (
@@ -178,8 +179,15 @@ const AboutPage: FC = (props: Props) => {
     );
 };
 
-AboutPage.defaultProps = {
+/* A constant variable that is used to set the SEO properties of the page. */
+const SEO: ISEOProps = {
     title: "About us",
+    description: "",
+    keywords: "",
+};
+
+AboutPage.defaultProps = {
+    ...SEO,
 };
 
 export default AboutPage;

@@ -1,6 +1,6 @@
 import { Container } from "@mui/system";
 import axios from "axios";
-import { useState } from "react";
+import { FC, useState } from "react";
 import {
     FaClock,
     FaEnvelope,
@@ -17,6 +17,7 @@ import {
 } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
+import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
@@ -36,7 +37,7 @@ const initialState: FormData = {
     message: "",
 };
 
-const ContactUsPage = (props: Props) => {
+const ContactUsPage: FC<Props> = (props) => {
     const [formData, setFormData] = useState<FormData>(initialState);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [successMessage, setSuccessMessage] = useState<string>("");
@@ -79,7 +80,7 @@ const ContactUsPage = (props: Props) => {
     };
 
     return (
-        <StandardLayout>
+        <StandardLayout {...props}>
             <PageHeading title="Contact Us" />
             <section className="bg-white py-12 md:py-24">
                 <Container>
@@ -225,6 +226,17 @@ const ContactUsPage = (props: Props) => {
             </section>
         </StandardLayout>
     );
+};
+
+/* A constant variable that is used to set the SEO properties of the page. */
+const SEO: ISEOProps = {
+    title: "Contact us - Carpe Diem Skills Academy",
+    description: "",
+    keywords: "",
+};
+
+ContactUsPage.defaultProps = {
+    ...SEO,
 };
 
 export default ContactUsPage;

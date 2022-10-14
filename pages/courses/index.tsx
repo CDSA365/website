@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
 import CallToAction from "../../components/cta";
 import PageHeading from "../../components/pageHeader";
+import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
@@ -259,8 +260,15 @@ const CoursesPage: FC = (props: Props) => {
     );
 };
 
-CoursesPage.defaultProps = {
+/* A constant variable that is used to set the SEO properties of the page. */
+const SEO: ISEOProps = {
     title: "Courses - Carpe Diem Skills Academy",
+    description: "",
+    keywords: "",
+};
+
+CoursesPage.defaultProps = {
+    ...SEO,
 };
 
 export default CoursesPage;

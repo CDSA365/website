@@ -189,6 +189,8 @@ const RequestDemo: NextPage = (props: Props) => {
 
 RequestDemo.defaultProps = {
     title: "Request a demo - Carpe Diem Skills Academy",
+    description: "",
+    keywords: "",
 };
 
 export default RequestDemo;
