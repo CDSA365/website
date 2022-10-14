@@ -305,9 +305,9 @@ const Home: FC = (props: Props) => {
 export async function getStaticProps() {
     return {
         props: {
-            title: "Carpe Diem Skills Academy - www.cdsa365.com",
-            description: "",
-            keyword: "",
+            title: "Home - Carpe Diem Skills Academy",
+            description: "Home - Carpe Diem Skills Academy",
+            keyword: "Home - Carpe Diem Skills Academy",
         },
     };
 }
