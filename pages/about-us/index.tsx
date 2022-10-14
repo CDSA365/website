@@ -19,6 +19,7 @@ import { ISEOProps } from "../../types/types";
 interface Props extends ISEOProps {}
 
 const AboutPage: FC = (props: Props) => {
+    console.log(props);
     return (
         <StandardLayout {...props}>
             <PageHeading title="About Us" />

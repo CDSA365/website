@@ -56,6 +56,7 @@ const coursesImages = [
 ];
 
 const CoursesPage: FC = (props: Props) => {
+    console.log(props);
     return (
         <StandardLayout {...props}>
             <PageHeading title="Courses" />

@@ -38,6 +38,7 @@ const initialState: FormData = {
 };
 
 const ContactUsPage: FC<Props> = (props) => {
+    console.log(props);
     const [formData, setFormData] = useState<FormData>(initialState);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [successMessage, setSuccessMessage] = useState<string>("");

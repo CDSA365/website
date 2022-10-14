@@ -22,6 +22,7 @@ import { FC } from "react";
 type Props = {};
 
 const Home: FC = (props: Props) => {
+    console.log(props);
     return (
         <StandardLayout {...props}>
             {/* HERO SECTION */}
