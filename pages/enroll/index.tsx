@@ -1,7 +1,6 @@
 import { Input } from "@material-tailwind/react";
 import { Alert, Box, Chip, Container, Divider } from "@mui/material";
 import axios from "axios";
-import { NextPage } from "next";
 import Link from "next/link";
 import { FC, useState } from "react";
 import { FaEye, FaPen, FaSignInAlt } from "react-icons/fa";
@@ -9,7 +8,6 @@ import PageHeading from "../../components/pageHeader";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
-import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
@@ -84,7 +82,7 @@ const RegisterPage: FC = (props: Props) => {
     };
 
     return (
-        <StandardLayout {...props}>
+        <StandardLayout title="Register" description="" keyword="" {...props}>
             <PageHeading title="Register" />
             <MainSection className="pb-12 md:pb-24">
                 <Container>
@@ -275,16 +273,6 @@ const RegisterPage: FC = (props: Props) => {
             </MainSection>
         </StandardLayout>
     );
-};
-
-const SEO: ISEOProps = {
-    title: "Register",
-    description: "",
-    keywords: "",
-};
-
-RegisterPage.defaultProps = {
-    ...SEO,
 };
 
 export default RegisterPage;

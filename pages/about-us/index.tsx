@@ -19,9 +19,8 @@ import { ISEOProps } from "../../types/types";
 interface Props extends ISEOProps {}
 
 const AboutPage: FC = (props: Props) => {
-    console.log(props);
     return (
-        <StandardLayout {...props}>
+        <StandardLayout title="About us" description="" keyword="" {...props}>
             <PageHeading title="About Us" />
             <MainSection>
                 {/* INTRO */}
@@ -178,17 +177,6 @@ const AboutPage: FC = (props: Props) => {
             </MainSection>
         </StandardLayout>
     );
-};
-
-/* A constant variable that is used to set the SEO properties of the page. */
-const SEO: ISEOProps = {
-    title: "About us",
-    description: "",
-    keywords: "",
-};
-
-AboutPage.defaultProps = {
-    ...SEO,
 };
 
 export default AboutPage;

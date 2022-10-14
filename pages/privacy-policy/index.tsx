@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import { FC } from "react";
 import PageHeading from "../../components/pageHeader";
 import { MainSection } from "../../components/styled";
@@ -9,7 +8,12 @@ type Props = {};
 
 const PrivacyPolicyPage: FC = (props: Props) => {
     return (
-        <StandardLayout {...props}>
+        <StandardLayout
+            title="Privacy Policy - Carpe Diem Skills Academy"
+            description=""
+            keyword=""
+            {...props}
+        >
             <PageHeading title="Privacy Policy" />
             <MainSection>
                 <div className="prose mx-auto max-w-3xl space-y-6 pb-12 md:pb-24">

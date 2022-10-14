@@ -1,14 +1,12 @@
 import { Input, Textarea, Select, Option } from "@material-tailwind/react";
 import { Box, Container } from "@mui/material";
 import axios from "axios";
-import { NextPage } from "next";
 import { ChangeEvent, FC, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import PageHeading from "../../components/pageHeader";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
-import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
@@ -79,7 +77,12 @@ const RequestDemo: FC = (props: Props) => {
     };
 
     return (
-        <StandardLayout {...props}>
+        <StandardLayout
+            title="Request a demo - Carpe Diem Skills Academy"
+            description=""
+            keyword=""
+            {...props}
+        >
             <PageHeading title="Request a Demo" />
             <MainSection className="pb-12 md:pb-24">
                 <Container>
@@ -186,16 +189,6 @@ const RequestDemo: FC = (props: Props) => {
             </MainSection>
         </StandardLayout>
     );
-};
-
-const SEO: ISEOProps = {
-    title: "Request a demo - Carpe Diem Skills Academy",
-    description: "",
-    keywords: "",
-};
-
-RequestDemo.defaultProps = {
-    ...SEO,
 };
 
 export default RequestDemo;

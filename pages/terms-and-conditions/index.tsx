@@ -1,7 +1,6 @@
-import { NextPage } from "next";
 import { FC } from "react";
 import PageHeading from "../../components/pageHeader";
-import { MainSection, PageHeader } from "../../components/styled";
+import { MainSection } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
 import { ISEOProps } from "../../types/types";
 
@@ -9,7 +8,12 @@ type Props = {};
 
 const TermsPage: FC = (props: Props) => {
     return (
-        <StandardLayout {...props}>
+        <StandardLayout
+            title="Terms &amp; Conditions - Carpe Diem Skills Academy"
+            description=""
+            keyword=""
+            {...props}
+        >
             <PageHeading title="Terms &amp; Conditions" />
             <MainSection>
                 <div className="prose mx-auto max-w-3xl space-y-6 pb-12 md:pb-24">
@@ -423,16 +427,6 @@ const TermsPage: FC = (props: Props) => {
             </MainSection>
         </StandardLayout>
     );
-};
-
-const SEO: ISEOProps = {
-    title: "Terms & Conditions - Carpe Diem Skills Academy",
-    description: "",
-    keywords: "",
-};
-
-TermsPage.defaultProps = {
-    ...SEO,
 };
 
 export default TermsPage;

@@ -22,9 +22,13 @@ import { FC } from "react";
 type Props = {};
 
 const Home: FC = (props: Props) => {
-    console.log(props);
     return (
-        <StandardLayout {...props}>
+        <StandardLayout
+            title="Carpe Diem Skills Academy - www.cdsa365.com"
+            description=""
+            keyword=""
+            {...props}
+        >
             {/* HERO SECTION */}
             <StyledHeroSection>
                 <Container className="flex items-center">
@@ -301,10 +305,6 @@ const Home: FC = (props: Props) => {
             <CallToAction />
         </StandardLayout>
     );
-};
-
-Home.defaultProps = {
-    title: "Carpe Diem Skills Academy - www.cdsa365.com",
 };
 
 export default Home;

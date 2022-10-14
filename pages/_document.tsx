@@ -23,7 +23,12 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
-                <Head />
+                <Head>
+                    <title>Carpe Diem Skills Academy - www.cdsa365.com</title>
+                    <meta name="description" content="" />
+                    <meta name="keywords" content="" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
                 <body>
                     <Main />
                     <NextScript />
