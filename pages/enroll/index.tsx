@@ -3,12 +3,13 @@ import { Alert, Box, Chip, Container, Divider } from "@mui/material";
 import axios from "axios";
 import { NextPage } from "next";
 import Link from "next/link";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { FaEye, FaPen, FaSignInAlt } from "react-icons/fa";
 import PageHeading from "../../components/pageHeader";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
+import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
@@ -44,7 +45,7 @@ const initialState: FormData = {
     password: "",
 };
 
-const RegisterPage: NextPage = (props: Props) => {
+const RegisterPage: FC = (props: Props) => {
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [successMessage, setSuccessMessage] = useState<string>("");
@@ -276,10 +277,14 @@ const RegisterPage: NextPage = (props: Props) => {
     );
 };
 
-RegisterPage.defaultProps = {
+const SEO: ISEOProps = {
     title: "Register",
     description: "",
     keywords: "",
+};
+
+RegisterPage.defaultProps = {
+    ...SEO,
 };
 
 export default RegisterPage;

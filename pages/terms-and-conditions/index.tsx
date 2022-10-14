@@ -1,11 +1,13 @@
 import { NextPage } from "next";
+import { FC } from "react";
 import PageHeading from "../../components/pageHeader";
 import { MainSection, PageHeader } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
+import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
-const TermsPage: NextPage = (props: Props) => {
+const TermsPage: FC = (props: Props) => {
     return (
         <StandardLayout {...props}>
             <PageHeading title="Terms &amp; Conditions" />
@@ -423,10 +425,14 @@ const TermsPage: NextPage = (props: Props) => {
     );
 };
 
-TermsPage.defaultProps = {
+const SEO: ISEOProps = {
     title: "Terms & Conditions - Carpe Diem Skills Academy",
     description: "",
     keywords: "",
+};
+
+TermsPage.defaultProps = {
+    ...SEO,
 };
 
 export default TermsPage;

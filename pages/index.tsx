@@ -1,5 +1,4 @@
 import { Avatar, Container } from "@mui/material";
-import type { NextPage } from "next";
 import Image from "next/image";
 import {
     Backdrop,
@@ -9,20 +8,20 @@ import {
     GridRowTriple,
     HeroCTA,
     ListStyleType,
-    StyledButton,
     StyledHeroSection,
 } from "../components/styled";
 import StandardLayout from "../layouts/standard";
-import { FaArrowRight, FaRegComment, FaStar } from "react-icons/fa";
+import { FaRegComment, FaStar } from "react-icons/fa";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { Reveal } from "../helpers/animations";
 import CallToAction from "../components/cta";
 import RequestDemoButton from "../components/requestDemoButton";
+import { FC } from "react";
 
 type Props = {};
 
-const Home: NextPage = (props: Props) => {
+const Home: FC = (props: Props) => {
     return (
         <StandardLayout {...props}>
             {/* HERO SECTION */}

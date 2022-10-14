@@ -2,12 +2,13 @@ import { Input, Textarea, Select, Option } from "@material-tailwind/react";
 import { Box, Container } from "@mui/material";
 import axios from "axios";
 import { NextPage } from "next";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import PageHeading from "../../components/pageHeader";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
+import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
@@ -20,7 +21,7 @@ type FormData = {
     message: string;
 };
 
-const RequestDemo: NextPage = (props: Props) => {
+const RequestDemo: FC = (props: Props) => {
     const [errorFields, setErrorFields] = useState<string[]>([]);
     const [actionMessage, setActionMessage] = useState<string | null>(null);
     const [formData, setFormData] = useState<FormData>({
@@ -187,10 +188,14 @@ const RequestDemo: NextPage = (props: Props) => {
     );
 };
 
-RequestDemo.defaultProps = {
+const SEO: ISEOProps = {
     title: "Request a demo - Carpe Diem Skills Academy",
     description: "",
     keywords: "",
+};
+
+RequestDemo.defaultProps = {
+    ...SEO,
 };
 
 export default RequestDemo;

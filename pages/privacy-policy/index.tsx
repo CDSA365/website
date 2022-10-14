@@ -1,11 +1,13 @@
 import { NextPage } from "next";
+import { FC } from "react";
 import PageHeading from "../../components/pageHeader";
 import { MainSection } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
+import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
-const PrivacyPolicyPage: NextPage = (props: Props) => {
+const PrivacyPolicyPage: FC = (props: Props) => {
     return (
         <StandardLayout {...props}>
             <PageHeading title="Privacy Policy" />
@@ -66,10 +68,14 @@ const PrivacyPolicyPage: NextPage = (props: Props) => {
     );
 };
 
-PrivacyPolicyPage.defaultProps = {
+const SEO: ISEOProps = {
     title: "Privacy Policy - Carpe Diem Skills Academy",
     description: "",
     keywords: "",
+};
+
+PrivacyPolicyPage.defaultProps = {
+    ...SEO,
 };
 
 export default PrivacyPolicyPage;
