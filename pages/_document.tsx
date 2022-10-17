@@ -24,9 +24,6 @@ export default class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <title>Carpe Diem Skills Academy - www.cdsa365.com</title>
-                    <meta name="description" content="" />
-                    <meta name="keywords" content="" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <body>
