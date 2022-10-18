@@ -3,7 +3,8 @@
     "scripts": {
         "dev": "env-cmd -e dev next dev",
         "build": "env-cmd -e prod next build && next export",
-        "start": "env-cmd -e prod next start"
+        "start": "env-cmd -e prod next start",
+        "sync": "git push -u https://github.com/CDSA365/website.git"
     },
     "dependencies": {
         "@emotion/css": "^11.10.0",
