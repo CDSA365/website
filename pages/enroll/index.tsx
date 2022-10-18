@@ -123,7 +123,7 @@ const RegisterPage: FC = (props: Props) => {
                             <Input
                                 label="Date of Birth"
                                 variant="outlined"
-                                type="datetime-local"
+                                type="date"
                                 size="lg"
                                 className="focus:ring-0 bg-stone-100"
                                 name="dob"
