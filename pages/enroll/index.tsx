@@ -278,10 +278,18 @@ const RegisterPage: NextPage = (props: Props) => {
     );
 };
 
-RegisterPage.defaultProps = {
-    title: "Register",
-    description: "",
-    keyword: "",
+RegisterPage.getInitialProps = async () => {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.enroll}?populate=*`;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const { data } = json;
+    const { attributes } = data;
+    const { SEO } = attributes;
+    return {
+        title: SEO ? SEO["metaTitle"] ?? "" : "",
+        description: SEO ? SEO["metaDescription"] ?? "" : "",
+        keyword: SEO ? SEO["keywords"] ?? "" : "",
+    };
 };
 
 export default RegisterPage;

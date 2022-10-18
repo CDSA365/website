@@ -18,10 +18,12 @@ import { Reveal } from "../helpers/animations";
 import CallToAction from "../components/cta";
 import RequestDemoButton from "../components/requestDemoButton";
 import { FC } from "react";
+import { NextPage } from "next";
+import { config } from "../config/config";
 
 type Props = {};
 
-const Home: FC = (props: Props) => {
+const Home: NextPage = (props: Props) => {
     return (
         <StandardLayout {...props}>
             {/* HERO SECTION */}
@@ -329,14 +331,18 @@ const Home: FC = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
+Home.getInitialProps = async () => {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.home}?populate=*`;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const { data } = json;
+    const { attributes } = data;
+    const { SEO } = attributes;
     return {
-        props: {
-            title: "Carpe Diem Skills Academy",
-            description: "Home - Carpe Diem Skills Academy",
-            keyword: "Home - Carpe Diem Skills Academy",
-        },
+        title: SEO ? SEO["metaTitle"] ?? "" : "",
+        description: SEO ? SEO["metaDescription"] ?? "" : "",
+        keyword: SEO ? SEO["keywords"] ?? "" : "",
     };
-}
+};
 
 export default Home;

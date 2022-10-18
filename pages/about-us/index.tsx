@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import CallToAction from "../../components/cta";
 import {
@@ -15,10 +15,12 @@ import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
 import PageHeading from "../../components/pageHeader";
 import { ISEOProps } from "../../types/types";
+import { NextPage } from "next";
+import { config } from "../../config/config";
 
 interface Props extends ISEOProps {}
 
-const AboutPage: FC = (props: Props) => {
+const AboutPage: NextPage = (props: Props) => {
     return (
         <StandardLayout {...props}>
             <PageHeading title="About Us" />
@@ -179,14 +181,18 @@ const AboutPage: FC = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
+AboutPage.getInitialProps = async () => {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.aboutUs}?populate=*`;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const { data } = json;
+    const { attributes } = data;
+    const { SEO } = attributes;
     return {
-        props: {
-            title: "About us - Carpe Diem Skills Academy",
-            description: "",
-            keyword: "",
-        },
+        title: SEO ? SEO["metaTitle"] ?? "" : "",
+        description: SEO ? SEO["metaDescription"] ?? "" : "",
+        keyword: SEO ? SEO["keywords"] ?? "" : "",
     };
-}
+};
 
 export default AboutPage;

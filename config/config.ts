@@ -15,4 +15,13 @@ export const config = {
         sendContactForm: BASE_URL + "/contact-form",
         getFeeData: BASE_URL + "/student/fee-data",
     },
+    pageIndex: {
+        home: 1,
+        aboutUs: 2,
+        courses: 3,
+        contactUs: 4,
+        privacyPolicy: 5,
+        termsAndConditions: 6,
+        enroll: 7,
+    },
 };

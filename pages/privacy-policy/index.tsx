@@ -1,12 +1,14 @@
+import { NextPage } from "next";
 import { FC } from "react";
 import PageHeading from "../../components/pageHeader";
 import { MainSection } from "../../components/styled";
+import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
 import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
-const PrivacyPolicyPage: FC = (props: Props) => {
+const PrivacyPolicyPage: NextPage = (props: Props) => {
     return (
         <StandardLayout
             title="Privacy Policy - Carpe Diem Skills Academy"
@@ -72,14 +74,18 @@ const PrivacyPolicyPage: FC = (props: Props) => {
     );
 };
 
-const SEO: ISEOProps = {
-    title: "Privacy Policy - Carpe Diem Skills Academy",
-    description: "",
-    keywords: "",
-};
-
-PrivacyPolicyPage.defaultProps = {
-    ...SEO,
+PrivacyPolicyPage.getInitialProps = async () => {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.privacyPolicy}?populate=*`;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const { data } = json;
+    const { attributes } = data;
+    const { SEO } = attributes;
+    return {
+        title: SEO ? SEO["metaTitle"] ?? "" : "",
+        description: SEO ? SEO["metaDescription"] ?? "" : "",
+        keyword: SEO ? SEO["keywords"] ?? "" : "",
+    };
 };
 
 export default PrivacyPolicyPage;

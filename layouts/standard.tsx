@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect } from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
@@ -18,24 +18,22 @@ const StandardLayout: FC<Props> = ({
     children,
     ...props
 }) => {
+    const defaultValue = "Carpe Diem Skills Academy";
+    const seoTitle = title?.length ? title : defaultValue;
+    const seoDesc = description?.length ? description : defaultValue;
+    const seoKeyword = keyword?.length ? keyword : defaultValue;
     return (
         <>
             <Head>
-                <title>{title}</title>
-                <meta name="description" content={description} />
-                <meta name="keywords" content={keyword} />
+                <title>{seoTitle}</title>
+                <meta name="description" content={seoDesc} />
+                <meta name="keywords" content={seoKeyword} />
             </Head>
             <Header />
             {children}
             <Footer />
         </>
     );
-};
-
-StandardLayout.defaultProps = {
-    title: "Carpe Diem Skills Academy",
-    description: "Carpe Diem Skills Academy",
-    keyword: "Carpe Diem Skills Academy",
 };
 
 export default StandardLayout;

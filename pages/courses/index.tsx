@@ -11,6 +11,8 @@ import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
 import CallToAction from "../../components/cta";
 import PageHeading from "../../components/pageHeader";
+import { NextPage } from "next";
+import { config } from "../../config/config";
 
 type Props = {};
 
@@ -54,7 +56,7 @@ const coursesImages = [
     "../images/pattern.png",
 ];
 
-const CoursesPage: FC = (props: Props) => {
+const CoursesPage: NextPage = (props: Props) => {
     return (
         <StandardLayout {...props}>
             <PageHeading title="Courses" />
@@ -259,14 +261,18 @@ const CoursesPage: FC = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
+CoursesPage.getInitialProps = async () => {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.courses}?populate=*`;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const { data } = json;
+    const { attributes } = data;
+    const { SEO } = attributes;
     return {
-        props: {
-            title: "Courses - Carpe Diem Skills Academy",
-            description: "",
-            keyword: "",
-        },
+        title: SEO ? SEO["metaTitle"] ?? "" : "",
+        description: SEO ? SEO["metaDescription"] ?? "" : "",
+        keyword: SEO ? SEO["keywords"] ?? "" : "",
     };
-}
+};
 
 export default CoursesPage;

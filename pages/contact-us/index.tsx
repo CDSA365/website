@@ -1,5 +1,6 @@
 import { Container } from "@mui/system";
 import axios from "axios";
+import { NextPage } from "next";
 import { FC, useState } from "react";
 import {
     FaClock,
@@ -36,7 +37,7 @@ const initialState: FormData = {
     message: "",
 };
 
-const ContactUsPage: FC<Props> = (props) => {
+const ContactUsPage: NextPage = (props: Props) => {
     const [formData, setFormData] = useState<FormData>(initialState);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [successMessage, setSuccessMessage] = useState<string>("");
@@ -227,14 +228,18 @@ const ContactUsPage: FC<Props> = (props) => {
     );
 };
 
-export async function getStaticProps() {
+ContactUsPage.getInitialProps = async () => {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.contactUs}?populate=*`;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const { data } = json;
+    const { attributes } = data;
+    const { SEO } = attributes;
     return {
-        props: {
-            title: "Contact us - Carpe Diem Skills Academy",
-            description: "",
-            keyword: "",
-        },
+        title: SEO ? SEO["metaTitle"] ?? "" : "",
+        description: SEO ? SEO["metaDescription"] ?? "" : "",
+        keyword: SEO ? SEO["keywords"] ?? "" : "",
     };
-}
+};
 
 export default ContactUsPage;

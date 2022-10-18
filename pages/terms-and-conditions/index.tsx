@@ -1,12 +1,14 @@
+import { NextPage } from "next";
 import { FC } from "react";
 import PageHeading from "../../components/pageHeader";
 import { MainSection } from "../../components/styled";
+import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
 import { ISEOProps } from "../../types/types";
 
 type Props = {};
 
-const TermsPage: FC = (props: Props) => {
+const TermsPage: NextPage = (props: Props) => {
     return (
         <StandardLayout {...props}>
             <PageHeading title="Terms &amp; Conditions" />
@@ -424,14 +426,18 @@ const TermsPage: FC = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
+TermsPage.getInitialProps = async () => {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.termsAndConditions}?populate=*`;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    const { data } = json;
+    const { attributes } = data;
+    const { SEO } = attributes;
     return {
-        props: {
-            title: "Terms and Conditions - Carpe Diem Skills Academy",
-            description: "",
-            keyword: "",
-        },
+        title: SEO ? SEO["metaTitle"] ?? "" : "",
+        description: SEO ? SEO["metaDescription"] ?? "" : "",
+        keyword: SEO ? SEO["keywords"] ?? "" : "",
     };
-}
+};
 
 export default TermsPage;
