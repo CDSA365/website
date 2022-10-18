@@ -86,14 +86,28 @@ const Home: FC = (props: Props) => {
                                     width={270}
                                     height={245}
                                 />
-                                <div className="prose text-center max-w-sm mt-4 mb-7">
+                                <div className="prose text-center max-w-lg mt-4 mb-7">
                                     <h2 className="text-blueGray-700">
                                         Learning Classes for Adults
                                     </h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore.
+                                    <p className="text-justify">
+                                        Carpe Diem Skills Academy has
+                                        unparalleled expertise in delivering
+                                        corporate English language training
+                                        solutions. We offer the highest calibre
+                                        language training specializing in
+                                        practical business vocabulary, role
+                                        play, and also ESP (English for Specific
+                                        Purposes) for corporate. Offering Best
+                                        English training for corporate, we are
+                                        committed to partnering with clients to
+                                        deliver value-added training that brings
+                                        tangible results. In order to
+                                        communicate effectively in a
+                                        multi-cultural business environment, it
+                                        is important to be able to express one's
+                                        ideas with impact and in appropriate
+                                        style.
                                     </p>
                                 </div>
                             </div>
@@ -111,14 +125,27 @@ const Home: FC = (props: Props) => {
                                     width={270}
                                     height={245}
                                 />
-                                <div className="prose text-center max-w-sm mt-4 mb-7">
+                                <div className="prose text-center max-w-lg mt-4 mb-7">
                                     <h2 className="text-blueGray-700">
                                         Learning Classes for kids
                                     </h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore.
+                                    <p className="text-justify">
+                                        Carpe Diem's Offline &amp; Online
+                                        platform is a place where your child can
+                                        have 1-to-1 English language sessions
+                                        with qualified English tutor which is a
+                                        structured online language program for
+                                        children. Carpe Diem offers online and
+                                        offline sessions with conversation
+                                        practice, personalized feedback, and
+                                        human interaction in classes at an
+                                        affordable price. We also prepare
+                                        lessons and provide teaching materials
+                                        based on your child's level or needs
+                                        which includes Vocabulary, Phonics,
+                                        Grammar, Pronunciation, Public speaking,
+                                        Presentations skills, Group discussions,
+                                        Stage fear eradication.
                                     </p>
                                 </div>
                             </div>
