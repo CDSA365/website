@@ -1,13 +1,16 @@
 import { Input } from "@material-tailwind/react";
 import { Alert, Box, Chip, Container, Divider } from "@mui/material";
 import axios from "axios";
+import { NextPage } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { FaEye, FaPen, FaSignInAlt } from "react-icons/fa";
-import PageHeading from "../../components/pageHeader";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
 import StandardLayout from "../../layouts/standard";
+
+const DynamicPageHeader = dynamic(() => import("../../components/pageHeader"));
 
 type Props = {};
 
@@ -43,7 +46,7 @@ const initialState: FormData = {
     password: "",
 };
 
-const RegisterPage: FC = (props: Props) => {
+const RegisterPage: NextPage = (props: Props) => {
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [successMessage, setSuccessMessage] = useState<string>("");
@@ -82,8 +85,8 @@ const RegisterPage: FC = (props: Props) => {
     };
 
     return (
-        <StandardLayout title="Register" description="" keyword="" {...props}>
-            <PageHeading title="Register" />
+        <StandardLayout {...props}>
+            <DynamicPageHeader title="Register" />
             <MainSection className="pb-12 md:pb-24">
                 <Container>
                     <Box className="bg-stone-50 border-[1px] rounded-lg p-6 md:p-12 w-full md:w-6/12 mx-auto space-y-6">
@@ -273,6 +276,12 @@ const RegisterPage: FC = (props: Props) => {
             </MainSection>
         </StandardLayout>
     );
+};
+
+RegisterPage.defaultProps = {
+    title: "Register",
+    description: "",
+    keyword: "",
 };
 
 export default RegisterPage;
