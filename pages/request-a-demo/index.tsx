@@ -190,8 +190,6 @@ export async function getStaticProps() {
     return {
         props: {
             title: "Request a demo - Carpe Diem Skills Academy",
-            description: "",
-            keyword: "",
         },
     };
 }

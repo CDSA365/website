@@ -18,10 +18,12 @@ const StandardLayout: FC<Props> = ({
     children,
     ...props
 }) => {
-    const defaultValue = "Carpe Diem Skills Academy";
-    const seoTitle = title?.length ? title : defaultValue;
-    const seoDesc = description?.length ? description : defaultValue;
-    const seoKeyword = keyword?.length ? keyword : defaultValue;
+    const defaultTitle = `Online Spoken English Classes, Communication Skills Training,  Spoken English Courses Coimbatore, Best English Speaking Courses, Public Speaking Skills Coimbatore`;
+    const defaultDesc = `Carpe Diem Skills Academy offers the best online spoken English classes and communication training in Coimbatore, India. We have a team of trainers who are experienced in improving interpersonal communication skills.`;
+    const defaultKeyword = `Online Spoken English Classes,Spoken English Classes Online,Spoken English Courses Online,Online Spoken English Courses,Spoken English Courses,Spoken English Classes,Best English Speaking Courses,Best English Speaking Courses Online,Best Spoken English Classes Online,Best Spoken English Classes,Communication Skills Training in Coimbatore,Public Speaking Skills Coimbatore`;
+    const seoTitle = title?.length ? title : defaultTitle;
+    const seoDesc = description?.length ? description : defaultDesc;
+    const seoKeyword = keyword?.length ? keyword : defaultKeyword;
     return (
         <>
             <Head>

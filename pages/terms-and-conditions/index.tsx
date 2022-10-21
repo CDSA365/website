@@ -428,16 +428,20 @@ const TermsPage: NextPage = (props: Props) => {
 
 TermsPage.getInitialProps = async () => {
     const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.termsAndConditions}?populate=*`;
-    const resp = await fetch(url);
-    const json = await resp.json();
-    const { data } = json;
-    const { attributes } = data;
-    const { SEO } = attributes;
-    return {
-        title: SEO ? SEO["metaTitle"] ?? "" : "",
-        description: SEO ? SEO["metaDescription"] ?? "" : "",
-        keyword: SEO ? SEO["keywords"] ?? "" : "",
-    };
+    try {
+        const resp = await fetch(url);
+        const json = await resp.json();
+        const { data } = json;
+        const { attributes } = data;
+        const { SEO } = attributes;
+        return {
+            title: SEO ? SEO["metaTitle"] ?? "" : "",
+            description: SEO ? SEO["metaDescription"] ?? "" : "",
+            keyword: SEO ? SEO["keywords"] ?? "" : "",
+        };
+    } catch (error) {
+        return {};
+    }
 };
 
 export default TermsPage;
