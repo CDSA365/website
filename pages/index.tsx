@@ -20,6 +20,7 @@ import RequestDemoButton from "../components/requestDemoButton";
 import { FC } from "react";
 import { NextPage } from "next";
 import { config } from "../config/config";
+import { fetchSeoData } from "../helpers/common-helpers";
 
 type Props = {};
 
@@ -332,21 +333,7 @@ const Home: NextPage = (props: Props) => {
 };
 
 Home.getInitialProps = async () => {
-    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.home}?populate=*`;
-    try {
-        const resp = await fetch(url);
-        const json = await resp.json();
-        const { data } = json;
-        const { attributes } = data;
-        const { SEO } = attributes;
-        return {
-            title: SEO ? SEO["metaTitle"] ?? "" : "",
-            description: SEO ? SEO["metaDescription"] ?? "" : "",
-            keyword: SEO ? SEO["keywords"] ?? "" : "",
-        };
-    } catch (error) {
-        return {};
-    }
+    return await fetchSeoData(config.pageIndex.home);
 };
 
 export default Home;

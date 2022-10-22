@@ -17,6 +17,7 @@ import {
     StyledTextArea,
 } from "../../components/styled";
 import { config } from "../../config/config";
+import { fetchSeoData } from "../../helpers/common-helpers";
 import StandardLayout from "../../layouts/standard";
 
 type Props = {};
@@ -229,21 +230,7 @@ const ContactUsPage: NextPage = (props: Props) => {
 };
 
 ContactUsPage.getInitialProps = async () => {
-    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.contactUs}?populate=*`;
-    try {
-        const resp = await fetch(url);
-        const json = await resp.json();
-        const { data } = json;
-        const { attributes } = data;
-        const { SEO } = attributes;
-        return {
-            title: SEO ? SEO["metaTitle"] ?? "" : "",
-            description: SEO ? SEO["metaDescription"] ?? "" : "",
-            keyword: SEO ? SEO["keywords"] ?? "" : "",
-        };
-    } catch (error) {
-        return {};
-    }
+    return await fetchSeoData(config.pageIndex.contactUs);
 };
 
 export default ContactUsPage;

@@ -13,6 +13,7 @@ import CallToAction from "../../components/cta";
 import PageHeading from "../../components/pageHeader";
 import { NextPage } from "next";
 import { config } from "../../config/config";
+import { fetchSeoData } from "../../helpers/common-helpers";
 
 type Props = {};
 
@@ -262,21 +263,7 @@ const CoursesPage: NextPage = (props: Props) => {
 };
 
 CoursesPage.getInitialProps = async () => {
-    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.courses}?populate=*`;
-    try {
-        const resp = await fetch(url);
-        const json = await resp.json();
-        const { data } = json;
-        const { attributes } = data;
-        const { SEO } = attributes;
-        return {
-            title: SEO ? SEO["metaTitle"] ?? "" : "",
-            description: SEO ? SEO["metaDescription"] ?? "" : "",
-            keyword: SEO ? SEO["keywords"] ?? "" : "",
-        };
-    } catch (error) {
-        return {};
-    }
+    return await fetchSeoData(config.pageIndex.courses);
 };
 
 export default CoursesPage;

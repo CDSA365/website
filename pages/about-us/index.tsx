@@ -17,6 +17,7 @@ import PageHeading from "../../components/pageHeader";
 import { ISEOProps } from "../../types/types";
 import { NextPage } from "next";
 import { config } from "../../config/config";
+import { fetchSeoData } from "../../helpers/common-helpers";
 
 interface Props extends ISEOProps {}
 
@@ -182,21 +183,7 @@ const AboutPage: NextPage = (props: Props) => {
 };
 
 AboutPage.getInitialProps = async () => {
-    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.aboutUs}?populate=*`;
-    try {
-        const resp = await fetch(url);
-        const json = await resp.json();
-        const { data } = json;
-        const { attributes } = data;
-        const { SEO } = attributes;
-        return {
-            title: SEO ? SEO["metaTitle"] ?? "" : "",
-            description: SEO ? SEO["metaDescription"] ?? "" : "",
-            keyword: SEO ? SEO["keywords"] ?? "" : "",
-        };
-    } catch (error) {
-        return {};
-    }
+    return await fetchSeoData(config.pageIndex.aboutUs);
 };
 
 export default AboutPage;

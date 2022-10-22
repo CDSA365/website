@@ -8,6 +8,7 @@ import { useState } from "react";
 import { FaEye, FaPen, FaSignInAlt } from "react-icons/fa";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
+import { fetchSeoData } from "../../helpers/common-helpers";
 import StandardLayout from "../../layouts/standard";
 
 const DynamicPageHeader = dynamic(() => import("../../components/pageHeader"));
@@ -279,21 +280,7 @@ const RegisterPage: NextPage = (props: Props) => {
 };
 
 RegisterPage.getInitialProps = async () => {
-    const url = `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/pages/${config.pageIndex.enroll}?populate=*`;
-    try {
-        const resp = await fetch(url);
-        const json = await resp.json();
-        const { data } = json;
-        const { attributes } = data;
-        const { SEO } = attributes;
-        return {
-            title: SEO ? SEO["metaTitle"] ?? "" : "",
-            description: SEO ? SEO["metaDescription"] ?? "" : "",
-            keyword: SEO ? SEO["keywords"] ?? "" : "",
-        };
-    } catch (error) {
-        return {};
-    }
+    return await fetchSeoData(config.pageIndex.enroll);
 };
 
 export default RegisterPage;

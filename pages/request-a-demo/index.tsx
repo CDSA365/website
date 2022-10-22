@@ -1,11 +1,13 @@
 import { Input, Textarea, Select, Option } from "@material-tailwind/react";
 import { Box, Container } from "@mui/material";
 import axios from "axios";
+import { NextPage } from "next";
 import { ChangeEvent, FC, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import PageHeading from "../../components/pageHeader";
 import { MainSection, StyledButton } from "../../components/styled";
 import { config } from "../../config/config";
+import { fetchSeoData } from "../../helpers/common-helpers";
 import StandardLayout from "../../layouts/standard";
 
 type Props = {};
@@ -19,7 +21,7 @@ type FormData = {
     message: string;
 };
 
-const RequestDemo: FC = (props: Props) => {
+const RequestDemo: NextPage = (props: Props) => {
     const [errorFields, setErrorFields] = useState<string[]>([]);
     const [actionMessage, setActionMessage] = useState<string | null>(null);
     const [formData, setFormData] = useState<FormData>({
@@ -186,12 +188,7 @@ const RequestDemo: FC = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
-    return {
-        props: {
-            title: "Request a demo - Carpe Diem Skills Academy",
-        },
-    };
-}
-
+RequestDemo.getInitialProps = async () => {
+    return await fetchSeoData(config.pageIndex.requestDemo);
+};
 export default RequestDemo;

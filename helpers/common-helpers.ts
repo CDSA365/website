@@ -1,4 +1,5 @@
 import moment from "moment";
+import { config } from "../config/config";
 
 export const frameTableRows = (classes: any) => {
     return classes.map((item: any) => ({
@@ -15,4 +16,20 @@ export const frameTableRows = (classes: any) => {
 
 export const framePaymentTableRows = (paymentData: any) => {
     return paymentData.map((payment: any) => {});
+};
+
+export const fetchSeoData = async (page: string) => {
+    const url = config.api.getSeoData + `?page=${page}`;
+    try {
+        const resp = await fetch(url);
+        const json = await resp.json();
+        const { title, description, keywords } = json;
+        return {
+            title: title ?? "",
+            description: description ?? "",
+            keyword: keywords ?? "",
+        };
+    } catch (error) {
+        return {};
+    }
 };
