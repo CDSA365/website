@@ -35,6 +35,14 @@ const navItems: NavItems[] = [
         link: "courses",
     },
     {
+        name: "Kids Classes",
+        link: "kids",
+    },
+    {
+        name: "Adults Classes",
+        link: "adults",
+    },
+    {
         name: "Contact Us",
         link: "contact-us",
     },

@@ -20,6 +20,8 @@ export const config = {
         home: "home",
         aboutUs: "about-us",
         courses: "courses",
+        kids: "kids",
+        adults: "adults",
         contactUs: "contact-us",
         privacyPolicy: "privacy-policy",
         termsAndConditions: "terms-and-conditions",
