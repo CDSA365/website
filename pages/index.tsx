@@ -332,8 +332,16 @@ const Home: NextPage = (props: Props) => {
     );
 };
 
-Home.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.home);
-};
+export async function getServerSideProps() {
+    const seoData = await fetchSeoData(config.pageIndex.home);
+    const { title, description, keyword } = seoData;
+    return {
+        props: {
+            title,
+            description,
+            keyword,
+        },
+    };
+}
 
 export default Home;

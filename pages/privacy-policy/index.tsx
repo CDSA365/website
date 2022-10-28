@@ -75,8 +75,16 @@ const PrivacyPolicyPage: NextPage = (props: Props) => {
     );
 };
 
-PrivacyPolicyPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.privacyPolicy);
-};
+export async function getServerSideProps() {
+    const seoData = await fetchSeoData(config.pageIndex.privacyPolicy);
+    const { title, description, keyword } = seoData;
+    return {
+        props: {
+            title,
+            description,
+            keyword,
+        },
+    };
+}
 
 export default PrivacyPolicyPage;

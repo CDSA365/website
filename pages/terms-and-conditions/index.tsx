@@ -427,8 +427,16 @@ const TermsPage: NextPage = (props: Props) => {
     );
 };
 
-TermsPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.termsAndConditions);
-};
+export async function getServerSideProps() {
+    const seoData = await fetchSeoData(config.pageIndex.termsAndConditions);
+    const { title, description, keyword } = seoData;
+    return {
+        props: {
+            title,
+            description,
+            keyword,
+        },
+    };
+}
 
 export default TermsPage;

@@ -262,8 +262,16 @@ const CoursesPage: NextPage = (props: Props) => {
     );
 };
 
-CoursesPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.courses);
-};
+export async function getServerSideProps() {
+    const seoData = await fetchSeoData(config.pageIndex.courses);
+    const { title, description, keyword } = seoData;
+    return {
+        props: {
+            title,
+            description,
+            keyword,
+        },
+    };
+}
 
 export default CoursesPage;

@@ -14,10 +14,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     const src2 = "https://www.googletagmanager.com/gtag/js?id=G-7WQBH1E1N7";
     return (
         <>
-            <Script async src={src1} />
-            <Script async src={src2} />
+            <Script strategy="beforeInteractive" async src={src1} />
+            <Script strategy="beforeInteractive" async src={src2} />
             <Script
-                strategy="afterInteractive"
+                strategy="beforeInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `window.dataLayer=window.dataLayer||[]
                     function gtag(){dataLayer.push(arguments)}
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 }}
             />
             <Script
-                strategy="afterInteractive"
+                strategy="beforeInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `window.dataLayer=window.dataLayer||[]
                     function gtag(){dataLayer.push(arguments)}

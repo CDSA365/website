@@ -182,8 +182,16 @@ const AboutPage: NextPage = (props: Props) => {
     );
 };
 
-AboutPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.aboutUs);
-};
+export async function getServerSideProps() {
+    const seoData = await fetchSeoData(config.pageIndex.aboutUs);
+    const { title, description, keyword } = seoData;
+    return {
+        props: {
+            title,
+            description,
+            keyword,
+        },
+    };
+}
 
 export default AboutPage;
