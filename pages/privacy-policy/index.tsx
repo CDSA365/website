@@ -75,7 +75,7 @@ const PrivacyPolicyPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const seoData = await fetchSeoData(config.pageIndex.privacyPolicy);
     const { title, description, keyword } = seoData;
     return {

@@ -332,7 +332,7 @@ const Home: NextPage = (props: Props) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const seoData = await fetchSeoData(config.pageIndex.home);
     const { title, description, keyword } = seoData;
     return {

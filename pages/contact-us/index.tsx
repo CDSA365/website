@@ -229,7 +229,7 @@ const ContactUsPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const seoData = await fetchSeoData(config.pageIndex.contactUs);
     const { title, description, keyword } = seoData;
     return {

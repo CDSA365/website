@@ -92,7 +92,7 @@ const KidsPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const seoData = await fetchSeoData(config.pageIndex.kids);
     const { title, description, keyword } = seoData;
     return {

@@ -279,7 +279,7 @@ const RegisterPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const seoData = await fetchSeoData(config.pageIndex.enroll);
     const { title, description, keyword } = seoData;
     return {

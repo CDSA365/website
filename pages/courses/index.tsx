@@ -262,7 +262,7 @@ const CoursesPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const seoData = await fetchSeoData(config.pageIndex.courses);
     const { title, description, keyword } = seoData;
     return {

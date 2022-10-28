@@ -67,7 +67,7 @@ const AdultsPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const seoData = await fetchSeoData(config.pageIndex.adults);
     const { title, description, keyword } = seoData;
     return {
