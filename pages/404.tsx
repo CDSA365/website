@@ -82,6 +82,7 @@ export async function getStaticProps() {
             .replace("/index", "")
     );
     return {
+        revalidate: 300,
         props: {
             pages,
         },

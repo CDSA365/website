@@ -283,6 +283,7 @@ export async function getStaticProps() {
     const seoData = await fetchSeoData(config.pageIndex.enroll);
     const { title, description, keyword } = seoData;
     return {
+        revalidate: 300,
         props: {
             title,
             description,
