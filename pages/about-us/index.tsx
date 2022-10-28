@@ -68,6 +68,7 @@ const AboutPage: NextPage = (props: Props) => {
                                         src={"../images/pattern-2.png"}
                                         width={400}
                                         height={400}
+                                        alt="About-us"
                                     />
                                 </motion.div>
                             </section>
