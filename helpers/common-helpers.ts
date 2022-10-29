@@ -20,16 +20,23 @@ export const framePaymentTableRows = (paymentData: any) => {
 
 export const fetchSeoData = async (page: string) => {
     const url = config.api.getSeoData + `?page=${page}`;
+    console.log("SEO FETCH URL", url);
+    const defaultKey = "Carpe Diem Skills Academy | www.cdsa.365.com";
     try {
         const resp = await fetch(url);
         const json = await resp.json();
         const { title, description, keywords } = json;
         return {
-            title: title ?? "",
-            description: description ?? "",
-            keyword: keywords ?? "",
+            title: title ?? defaultKey,
+            description: description ?? defaultKey,
+            keyword: keywords ?? defaultKey,
         };
     } catch (error) {
-        return {};
+        console.log("SEO FETCH ERROR", error);
+        return {
+            title: defaultKey,
+            description: defaultKey,
+            keyword: defaultKey,
+        };
     }
 };
