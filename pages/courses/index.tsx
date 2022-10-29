@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
 import CallToAction from "../../components/cta";
 import PageHeading from "../../components/pageHeader";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { config } from "../../config/config";
 import { fetchSeoData } from "../../helpers/common-helpers";
 
@@ -262,8 +262,13 @@ const CoursesPage: NextPage = (props: Props) => {
     );
 };
 
-CoursesPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.courses);
+// CoursesPage.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.courses);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.courses);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default CoursesPage;

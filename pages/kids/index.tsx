@@ -1,5 +1,5 @@
 import { Container } from "@mui/system";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import CallToAction from "../../components/cta";
 import PageHeading from "../../components/pageHeader";
 import {
@@ -92,8 +92,13 @@ const KidsPage: NextPage = (props: Props) => {
     );
 };
 
-KidsPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.kids);
+// KidsPage.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.kids);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.kids);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default KidsPage;

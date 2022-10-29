@@ -11,6 +11,7 @@ const siteMetadata = {
     facebook: "https://www.facebook.com/example.page",
     instagram: "https://www.instagram.com/example.page",
     linkedin: "https://www.linkedin.com/in/example.page",
+    ogType: "website",
 };
 
 export default siteMetadata;

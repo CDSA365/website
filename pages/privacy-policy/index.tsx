@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { FC } from "react";
 import PageHeading from "../../components/pageHeader";
 import { MainSection } from "../../components/styled";
@@ -74,8 +74,13 @@ const PrivacyPolicyPage: NextPage = (props: Props) => {
         </StandardLayout>
     );
 };
-PrivacyPolicyPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.privacyPolicy);
+// PrivacyPolicyPage.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.privacyPolicy);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.privacyPolicy);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default PrivacyPolicyPage;

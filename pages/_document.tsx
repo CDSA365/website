@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
     render() {
         const metaName = "google-site-verification";
         const metaContent = "TQzQ2whZRQK2Gt35GAlfkEairavXg7ASktjgKEqZ_8g";
-        const { companyName, canonicalUrl } = siteMetadata;
+        const { companyName, canonicalUrl, ogType } = siteMetadata;
         return (
             <Html lang="en">
                 <Head>
@@ -32,6 +32,7 @@ export default class MyDocument extends Document {
                     <meta property="og:locale" content="en_US" />
                     <meta property="og:site_name" content={companyName} />
                     <meta property="og:url" content={canonicalUrl} />
+                    <meta property="og:type" content={ogType} />
                     <link rel="icon" href="/favicon.ico" />
                     <link rel="canonical" href={canonicalUrl} />
                 </Head>

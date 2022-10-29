@@ -1,5 +1,5 @@
 import { Container } from "@mui/system";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import CallToAction from "../../components/cta";
 import PageHeading from "../../components/pageHeader";
 import { MainSection } from "../../components/styled";
@@ -67,8 +67,13 @@ const AdultsPage: NextPage = (props: Props) => {
     );
 };
 
-AdultsPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.adults);
+// AdultsPage.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.adults);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.adults);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default AdultsPage;

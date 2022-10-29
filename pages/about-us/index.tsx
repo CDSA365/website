@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
 import PageHeading from "../../components/pageHeader";
 import { ISEOProps } from "../../types/types";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { config } from "../../config/config";
 import { fetchSeoData } from "../../helpers/common-helpers";
 
@@ -183,8 +183,13 @@ const AboutPage: NextPage = (props: Props) => {
     );
 };
 
-AboutPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.aboutUs);
+// AboutPage.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.aboutUs);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.aboutUs);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default AboutPage;

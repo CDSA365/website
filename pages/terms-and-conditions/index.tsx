@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { FC } from "react";
 import PageHeading from "../../components/pageHeader";
 import { MainSection } from "../../components/styled";
@@ -427,8 +427,13 @@ const TermsPage: NextPage = (props: Props) => {
     );
 };
 
-TermsPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.termsAndConditions);
+// TermsPage.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.termsAndConditions);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.termsAndConditions);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default TermsPage;

@@ -1,7 +1,7 @@
 import { Input, Textarea, Select, Option } from "@material-tailwind/react";
 import { Box, Container } from "@mui/material";
 import axios from "axios";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { ChangeEvent, FC, useState } from "react";
 import { FaExclamationCircle } from "react-icons/fa";
 import PageHeading from "../../components/pageHeader";
@@ -188,8 +188,13 @@ const RequestDemo: NextPage = (props: Props) => {
     );
 };
 
-RequestDemo.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.requestDemo);
+// RequestDemo.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.requestDemo);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.requestDemo);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default RequestDemo;

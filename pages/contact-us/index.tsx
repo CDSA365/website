@@ -1,6 +1,6 @@
 import { Container } from "@mui/system";
 import axios from "axios";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { FC, useState } from "react";
 import {
     FaClock,
@@ -229,8 +229,13 @@ const ContactUsPage: NextPage = (props: Props) => {
     );
 };
 
-ContactUsPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.contactUs);
+// ContactUsPage.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.contactUs);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.contactUs);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default ContactUsPage;

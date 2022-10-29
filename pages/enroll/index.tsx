@@ -1,7 +1,7 @@
 import { Input } from "@material-tailwind/react";
 import { Alert, Box, Chip, Container, Divider } from "@mui/material";
 import axios from "axios";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
@@ -279,8 +279,13 @@ const RegisterPage: NextPage = (props: Props) => {
     );
 };
 
-RegisterPage.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.enroll);
+// RegisterPage.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.enroll);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.enroll);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default RegisterPage;

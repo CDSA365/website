@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 import { Reveal } from "../helpers/animations";
 import CallToAction from "../components/cta";
 import RequestDemoButton from "../components/requestDemoButton";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { config } from "../config/config";
 import { fetchSeoData } from "../helpers/common-helpers";
 
@@ -331,8 +331,13 @@ const Home: NextPage = (props: Props) => {
     );
 };
 
-Home.getInitialProps = async () => {
-    return await fetchSeoData(config.pageIndex.home);
+// Home.getInitialProps = async () => {
+//     return await fetchSeoData(config.pageIndex.home);
+// };
+
+export const getStaticProps: GetStaticProps = async () => {
+    const seoData = await fetchSeoData(config.pageIndex.home);
+    return { props: seoData, revalidate: 60 };
 };
 
 export default Home;
