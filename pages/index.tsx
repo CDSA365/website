@@ -17,7 +17,6 @@ import { motion } from "framer-motion";
 import { Reveal } from "../helpers/animations";
 import CallToAction from "../components/cta";
 import RequestDemoButton from "../components/requestDemoButton";
-import { FC } from "react";
 import { NextPage } from "next";
 import { config } from "../config/config";
 import { fetchSeoData } from "../helpers/common-helpers";
