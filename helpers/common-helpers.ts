@@ -20,6 +20,7 @@ export const framePaymentTableRows = (paymentData: any) => {
 
 export const fetchSeoData = async (page: string) => {
     const url = config.api.getSeoData + `?page=${page}`;
+    // const url = `https://api.cdsa365.com/v1/seo/get?page=${page}`;
     console.log("SEO FETCH URL", url);
     const defaultKey = "Carpe Diem Skills Academy | www.cdsa.365.com";
     try {
@@ -34,9 +35,9 @@ export const fetchSeoData = async (page: string) => {
     } catch (error) {
         console.log("SEO FETCH ERROR", error);
         return {
-            title: defaultKey,
-            description: defaultKey,
-            keyword: defaultKey,
+            title: "Error block",
+            description: "Error block",
+            keyword: "Error block",
         };
     }
 };
