@@ -3,10 +3,6 @@ import "../styles/style.css";
 import type { AppProps } from "next/app";
 import { CacheProvider } from "@emotion/react";
 import { cache } from "@emotion/css";
-import store, { wrapper, persistor } from "../store/store";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { AuthProvider } from "../context/auth-context";
 import Script from "next/script";
 import Head from "next/head";
 
@@ -42,16 +38,10 @@ function MyApp({ Component, pageProps }: AppProps<any>) {
             />
             <Script defer src="/static/js/main.e07f7365.js" />
             <CacheProvider value={cache}>
-                <Provider store={store}>
-                    <PersistGate persistor={persistor} loading={null}>
-                        <AuthProvider>
-                            <Component {...pageProps} />
-                        </AuthProvider>
-                    </PersistGate>
-                </Provider>
+                <Component {...pageProps} />
             </CacheProvider>
         </>
     );
 }
 
-export default wrapper.withRedux(MyApp);
+export default MyApp;
