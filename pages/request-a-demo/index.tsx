@@ -188,17 +188,8 @@ const RequestDemo: NextPage = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
-    const seoData = await fetchSeoData(config.pageIndex.requestDemo);
-    const { title, description, keyword } = seoData;
-    return {
-        revalidate: 300,
-        props: {
-            title,
-            description,
-            keyword,
-        },
-    };
-}
+RequestDemo.getInitialProps = async () => {
+    return await fetchSeoData(config.pageIndex.requestDemo);
+};
 
 export default RequestDemo;

@@ -74,18 +74,8 @@ const PrivacyPolicyPage: NextPage = (props: Props) => {
         </StandardLayout>
     );
 };
-
-export async function getStaticProps() {
-    const seoData = await fetchSeoData(config.pageIndex.privacyPolicy);
-    const { title, description, keyword } = seoData;
-    return {
-        revalidate: 300,
-        props: {
-            title,
-            description,
-            keyword,
-        },
-    };
-}
+PrivacyPolicyPage.getInitialProps = async () => {
+    return await fetchSeoData(config.pageIndex.privacyPolicy);
+};
 
 export default PrivacyPolicyPage;

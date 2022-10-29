@@ -19,8 +19,7 @@ export const framePaymentTableRows = (paymentData: any) => {
 };
 
 export const fetchSeoData = async (page: string) => {
-    // const url = config.api.getSeoData + `?page=${page}`;
-    const url = `https://api.cdsa365.com/v1/seo/get?page=${page}`;
+    const url = config.api.getSeoData + `?page=${page}`;
     const defaultKey = "Carpe Diem Skills Academy | www.cdsa.365.com";
     try {
         const resp = await fetch(url);
@@ -33,9 +32,9 @@ export const fetchSeoData = async (page: string) => {
         };
     } catch (error) {
         return {
-            title: "Error block",
-            description: "Error block",
-            keyword: "Error block",
+            title: defaultKey,
+            description: defaultKey,
+            keyword: defaultKey,
         };
     }
 };

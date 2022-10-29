@@ -229,17 +229,8 @@ const ContactUsPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
-    const seoData = await fetchSeoData(config.pageIndex.contactUs);
-    const { title, description, keyword } = seoData;
-    return {
-        revalidate: 300,
-        props: {
-            title,
-            description,
-            keyword,
-        },
-    };
-}
+ContactUsPage.getInitialProps = async () => {
+    return await fetchSeoData(config.pageIndex.contactUs);
+};
 
 export default ContactUsPage;

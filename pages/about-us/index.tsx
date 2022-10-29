@@ -183,17 +183,8 @@ const AboutPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
-    const seoData = await fetchSeoData(config.pageIndex.aboutUs);
-    const { title, description, keyword } = seoData;
-    return {
-        revalidate: 300,
-        props: {
-            title,
-            description,
-            keyword,
-        },
-    };
-}
+AboutPage.getInitialProps = async () => {
+    return await fetchSeoData(config.pageIndex.aboutUs);
+};
 
 export default AboutPage;

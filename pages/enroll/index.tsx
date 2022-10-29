@@ -279,17 +279,8 @@ const RegisterPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
-    const seoData = await fetchSeoData(config.pageIndex.enroll);
-    const { title, description, keyword } = seoData;
-    return {
-        revalidate: 300,
-        props: {
-            title,
-            description,
-            keyword,
-        },
-    };
-}
+RegisterPage.getInitialProps = async () => {
+    return await fetchSeoData(config.pageIndex.enroll);
+};
 
 export default RegisterPage;

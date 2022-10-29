@@ -332,17 +332,8 @@ const Home: NextPage = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
-    const seoData = await fetchSeoData(config.pageIndex.home);
-    const { title, description, keyword } = seoData;
-    return {
-        revalidate: 300,
-        props: {
-            title,
-            description,
-            keyword,
-        },
-    };
-}
+Home.getInitialProps = async () => {
+    return await fetchSeoData(config.pageIndex.home);
+};
 
 export default Home;

@@ -67,17 +67,8 @@ const AdultsPage: NextPage = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
-    const seoData = await fetchSeoData(config.pageIndex.adults);
-    const { title, description, keyword } = seoData;
-    return {
-        revalidate: 300,
-        props: {
-            title,
-            description,
-            keyword,
-        },
-    };
-}
+AdultsPage.getInitialProps = async () => {
+    return await fetchSeoData(config.pageIndex.adults);
+};
 
 export default AdultsPage;
