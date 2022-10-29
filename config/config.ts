@@ -1,5 +1,4 @@
-const { NEXT_PUBLIC_API_BASE_URL } = process.env;
-const BASE_URL = NEXT_PUBLIC_API_BASE_URL;
+const { NEXT_PUBLIC_API_BASE_URL: BASE_URL } = process.env;
 
 export const config = {
     api: {
