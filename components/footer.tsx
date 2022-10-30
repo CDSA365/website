@@ -18,8 +18,12 @@ const navItems = [
         link: "courses",
     },
     {
-        name: "Testimonials",
-        link: "testimonials",
+        name: "Kids Classes",
+        link: "kids",
+    },
+    {
+        name: "Adults Classes",
+        link: "adults",
     },
     {
         name: "Contact Us",

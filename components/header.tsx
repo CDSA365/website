@@ -1,5 +1,11 @@
 import { StyledButton, StyledHeader, StyledNavItem } from "./styled";
-import { FaBars, FaCaretRight, FaHome, FaSignInAlt } from "react-icons/fa";
+import {
+    FaBars,
+    FaCaretRight,
+    FaEnvelope,
+    FaPhoneAlt,
+    FaSignInAlt,
+} from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -53,6 +59,26 @@ const Header = (props: Props) => {
     const [showSidebar, setShowSidebar] = useState<boolean>(false);
     return (
         <>
+            <section className="bg-red-700 w-full">
+                <ul className="flex justify-end md:px-4 divide-x-[1px] divide-white/40">
+                    <a href="mailto:info@cdsa365.com">
+                        <li className="p-4 text-red-200 hover:text-white font-semibold text-sm flex gap-3 items-center border-white/40 first:border-l-[1px] ">
+                            <FaEnvelope />{" "}
+                            <span className="hidden md:block">
+                                info@cdsa365.com
+                            </span>
+                        </li>
+                    </a>
+                    <a href="tel:+919486051647">
+                        <li className="p-4 text-red-200 hover:text-white font-semibold text-sm flex gap-3 items-center border-white/40 last:border-r-[1px]">
+                            <FaPhoneAlt />{" "}
+                            <span className="hidden md:block">
+                                +91-9486051647
+                            </span>
+                        </li>
+                    </a>
+                </ul>
+            </section>
             <StyledHeader>
                 <div className="flex w-1/6 justify-start">
                     <Link href={"/"}>
