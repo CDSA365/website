@@ -20,10 +20,38 @@ import RequestDemoButton from "../components/requestDemoButton";
 import { GetStaticProps, NextPage } from "next";
 import { config } from "../config/config";
 import { fetchSeoData } from "../helpers/common-helpers";
+import { useEffect, useState } from "react";
 
-type Props = {};
+type Props = {
+    title: string;
+    description: string;
+    keyword: string;
+    images: any[];
+    [x: string]: any;
+};
 
-const Home: NextPage = (props: Props) => {
+type ImageType = {
+    alt: string;
+    title: string;
+    [x: string]: any;
+};
+
+const Home: NextPage = (props: Partial<Props>) => {
+    const imageOneId = "1dcsmfkol5b1smqa";
+    const imageTwoId = "1dcsmfkol5b1smqb";
+    const imageThreeId = "1dcsmfkol5b1smqc";
+    const [imageOne, setImageOne] = useState<Partial<ImageType>>({});
+    const [imageTwo, setImageTwo] = useState<Partial<ImageType>>({});
+    const [imageThree, setImageThree] = useState<Partial<ImageType>>({});
+
+    useEffect(() => {
+        if (props.images) {
+            setImageOne(props.images.find((x) => x.id === imageOneId));
+            setImageTwo(props.images.find((x) => x.id === imageTwoId));
+            setImageThree(props.images.find((x) => x.id === imageThreeId));
+        }
+    }, [props]);
+
     return (
         <StandardLayout {...props}>
             {/* HERO SECTION */}
@@ -51,7 +79,8 @@ const Home: NextPage = (props: Props) => {
                         >
                             <Image
                                 src={"/images/hero-img.png"}
-                                alt="Carpe Diem Skills Academy"
+                                alt={imageOne.alt}
+                                title={imageOne.title}
                                 layout="responsive"
                                 width={752}
                                 height={734}
@@ -83,7 +112,8 @@ const Home: NextPage = (props: Props) => {
                             <div className="my-4 md:my-0 flex flex-col justify-center items-center">
                                 <Image
                                     src={"/images/adult-classes.png"}
-                                    alt="Learning classes for adults"
+                                    alt={imageTwo.alt}
+                                    title={imageTwo.title}
                                     layout="intrinsic"
                                     width={270}
                                     height={245}
@@ -122,7 +152,8 @@ const Home: NextPage = (props: Props) => {
                             <div className="my-4 md:my-0 flex flex-col justify-center items-center">
                                 <Image
                                     src={"/images/kids-classes.png"}
-                                    alt="Learning classes for kids"
+                                    alt={imageThree.alt}
+                                    title={imageThree.title}
                                     layout="intrinsic"
                                     width={270}
                                     height={245}
@@ -330,10 +361,6 @@ const Home: NextPage = (props: Props) => {
         </StandardLayout>
     );
 };
-
-// Home.getInitialProps = async () => {
-//     return await fetchSeoData(config.pageIndex.home);
-// };
 
 export const getStaticProps: GetStaticProps = async () => {
     const seoData = await fetchSeoData(config.pageIndex.home);

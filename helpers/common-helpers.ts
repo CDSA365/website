@@ -24,17 +24,19 @@ export const fetchSeoData = async (page: string) => {
     try {
         const resp = await fetch(url);
         const json = await resp.json();
-        const { title, description, keywords } = json;
+        const { title, description, keywords, images } = json;
         return {
             title: title ?? defaultKey,
             description: description ?? defaultKey,
             keyword: keywords ?? defaultKey,
+            images: images ?? [],
         };
     } catch (error) {
         return {
             title: defaultKey,
             description: defaultKey,
             keyword: defaultKey,
+            images: [],
         };
     }
 };
