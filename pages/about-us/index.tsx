@@ -86,10 +86,10 @@ const AboutPage: NextPage = (props: Props) => {
                                         Our Mission
                                     </h2>
                                     <p className="text-white font-mono italic">
-                                        Is to transform you to be an effective
-                                        and confident communicator who speaks in
-                                        front of a large group of audience
-                                        without inhibition or fear
+                                        Is to empathise with students;
+                                        understand their needs, diagnose their
+                                        ability and provide personalised
+                                        training to help achieve their goals
                                     </p>
                                 </div>
                             </div>

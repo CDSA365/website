@@ -37,18 +37,18 @@ type ImageType = {
 };
 
 const Home: NextPage = (props: Partial<Props>) => {
-    const imageOneId = "1dcsmfkol5b1smqa";
-    const imageTwoId = "1dcsmfkol5b1smqb";
-    const imageThreeId = "1dcsmfkol5b1smqc";
+    const imgOneId = "1dcsmfkol5b1smqa";
+    const imgTwoId = "1dcsmfkol5b1smqb";
+    const imgThreeId = "1dcsmfkol5b1smqc";
     const [imageOne, setImageOne] = useState<Partial<ImageType>>({});
     const [imageTwo, setImageTwo] = useState<Partial<ImageType>>({});
     const [imageThree, setImageThree] = useState<Partial<ImageType>>({});
 
     useEffect(() => {
         if (props.images) {
-            setImageOne(props.images.find((x) => x.id === imageOneId));
-            setImageTwo(props.images.find((x) => x.id === imageTwoId));
-            setImageThree(props.images.find((x) => x.id === imageThreeId));
+            setImageOne(props.images.find((x) => x.id === imgOneId) ?? {});
+            setImageTwo(props.images.find((x) => x.id === imgTwoId) ?? {});
+            setImageThree(props.images.find((x) => x.id === imgThreeId) ?? {});
         }
     }, [props]);
 
@@ -59,7 +59,7 @@ const Home: NextPage = (props: Partial<Props>) => {
                 <Container className="flex items-center">
                     <GridRowDouble>
                         <HeroCTA className="prose-sm text-center md:prose-lg md:text-left">
-                            <h1 className="font-bold text-blueGray-600 my-0 md:my-0">
+                            <h1 className="font-bold text-blueGray-600 my-0 sm:my-0 md:my-0 lg:my-0">
                                 Designed to transform you into a more confident
                                 speaker
                             </h1>
