@@ -7,10 +7,10 @@ function addPage(page) {
         .replace(".js", "")
         .replace(".tsx", "")
         .replace(".mdx", "")
-        .replace("/index", "");
-    const route = path === "/index" ? "" : path;
+        .replace("index", "");
+    const route = path === "index" ? "" : path;
     return `\n<url>
-    <loc>${`https://cdsa365.com${route}`}</loc>
+    <loc>${`https://www.cdsa365.com${route}`}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
