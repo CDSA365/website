@@ -1,24 +1,9 @@
 import { StyledButton, StyledHeader, StyledNavItem } from "./styled";
-import {
-    FaBars,
-    FaCaretRight,
-    FaEnvelope,
-    FaPhoneAlt,
-    FaSignInAlt,
-} from "react-icons/fa";
+import { FaBars, FaCaretRight, FaEnvelope, FaPhoneAlt, FaSignInAlt } from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-    Box,
-    Drawer,
-    IconButton,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
-} from "@mui/material";
+import { Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
 type Props = {};
 
@@ -63,18 +48,12 @@ const Header = (props: Props) => {
                 <ul className="flex justify-end md:px-4 divide-x-[1px] divide-white/40">
                     <a href="mailto:info@cdsa365.com">
                         <li className="p-4 text-red-200 hover:text-white font-semibold text-sm flex gap-3 items-center border-white/40 first:border-l-[1px] ">
-                            <FaEnvelope />{" "}
-                            <span className="hidden md:block">
-                                info@cdsa365.com
-                            </span>
+                            <FaEnvelope /> <span className="hidden md:block">info@cdsa365.com</span>
                         </li>
                     </a>
                     <a href="tel:+919486051647">
                         <li className="p-4 text-red-200 hover:text-white font-semibold text-sm flex gap-3 items-center border-white/40 last:border-r-[1px]">
-                            <FaPhoneAlt />{" "}
-                            <span className="hidden md:block">
-                                +91-9486051647
-                            </span>
+                            <FaPhoneAlt /> <span className="hidden md:block">+91-9486051647</span>
                         </li>
                     </a>
                 </ul>
@@ -97,11 +76,7 @@ const Header = (props: Props) => {
                     <ul className="flex flex-row gap-2 items-center">
                         {navItems.map((item, key) => (
                             <Link href={`/${item.link}`} key={key}>
-                                <StyledNavItem
-                                    key={key}
-                                    onClick={() => setActiveNav(key)}
-                                    active={key === activeNav}
-                                >
+                                <StyledNavItem key={key} onClick={() => setActiveNav(key)} active={key === activeNav}>
                                     {item.name}
                                 </StyledNavItem>
                             </Link>
@@ -109,7 +84,7 @@ const Header = (props: Props) => {
                     </ul>
                 </nav>
                 <div className="hidden md:flex w-1/6 justify-end">
-                    <Link href={"/"}>
+                    <Link href={"https://student.cdsa365.com"}>
                         <StyledButton color="error">
                             <FaSignInAlt /> Login
                         </StyledButton>
@@ -121,15 +96,8 @@ const Header = (props: Props) => {
                     </IconButton>
                 </div>
             </StyledHeader>
-            <Drawer
-                anchor="left"
-                open={showSidebar}
-                onClose={() => setShowSidebar(false)}
-            >
-                <Box
-                    sx={{ width: 250, paddingTop: "1em", paddingBottom: "1em" }}
-                    role="presentation"
-                >
+            <Drawer anchor="left" open={showSidebar} onClose={() => setShowSidebar(false)}>
+                <Box sx={{ width: 250, paddingTop: "1em", paddingBottom: "1em" }} role="presentation">
                     <div className="p-3 prose">
                         <h4>Menu</h4>
                     </div>
