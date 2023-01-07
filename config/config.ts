@@ -26,5 +26,7 @@ export const config = {
         termsAndConditions: "terms-and-conditions",
         enroll: "enroll",
         requestDemo: "request-a-demo",
+        publicSpeakingForKids: "public-speaking-for-kids",
+        publicSpeakingForAdults: "public-speaking-for-adults",
     },
 };

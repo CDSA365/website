@@ -1,11 +1,6 @@
-import { FC } from "react";
 import { Container } from "@mui/system";
 import Image from "next/image";
-import {
-    GridRowDouble,
-    GridRowTriple,
-    MainSection,
-} from "../../components/styled";
+import { GridRowDouble, GridRowTriple, MainSection } from "../../components/styled";
 import StandardLayout from "../../layouts/standard";
 import { motion } from "framer-motion";
 import { Reveal } from "../../helpers/animations";
@@ -69,28 +64,17 @@ const CoursesPage: NextPage = (props: Props) => {
                                 <span className="uppercase text-red-500 font-bold text-sm">
                                     Carpe Diem Skills Academy
                                 </span>
-                                <h2 className="text-blurGray-700 mt-0">
-                                    Courses Offered
-                                </h2>
+                                <h2 className="text-blurGray-700 mt-0">Courses Offered</h2>
                                 <div className="space-y-8">
                                     {courses.map((course, key) => (
                                         <div className="flex items-center">
                                             <div className="w-2/12 flex justify-start text-3xl font-bold">
-                                                <span className="p-4 bg-red-500 text-white rounded-lg">
-                                                    {key + 1}
-                                                </span>
+                                                <span className="p-4 bg-red-500 text-white rounded-lg">{key + 1}</span>
                                             </div>
-                                            <div
-                                                key={key}
-                                                className="w-10/12 flex items-center"
-                                            >
+                                            <div key={key} className="w-10/12 flex items-center">
                                                 <div>
-                                                    <h4 className="my-0">
-                                                        {course.title}
-                                                    </h4>
-                                                    <p className="text-blueGray-500 m-0">
-                                                        {course.description}
-                                                    </p>
+                                                    <h4 className="my-0">{course.title}</h4>
+                                                    <p className="text-blueGray-500 m-0">{course.description}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,20 +84,9 @@ const CoursesPage: NextPage = (props: Props) => {
                         </div>
                         <GridRowDouble>
                             {coursesImages.map((image, key) => (
-                                <div
-                                    className="rounded-lg overflow-hidden relative hidden md:block"
-                                    key={key}
-                                >
-                                    <motion.div
-                                        initial={Reveal.offscreen}
-                                        whileInView={Reveal.onscreen}
-                                    >
-                                        <Image
-                                            src={image}
-                                            width={280}
-                                            height={320}
-                                            layout="responsive"
-                                        />
+                                <div className="rounded-lg overflow-hidden relative hidden md:block" key={key}>
+                                    <motion.div initial={Reveal.offscreen} whileInView={Reveal.onscreen}>
+                                        <Image src={image} width={280} height={320} layout="responsive" />
                                     </motion.div>
                                 </div>
                             ))}
@@ -125,46 +98,31 @@ const CoursesPage: NextPage = (props: Props) => {
                         <GridRowTriple inline={true}>
                             <section className="p-6 h-full">
                                 <div className="bg-amber-50 rounded-lg prose text-center p-4 py-6 space-y-6">
-                                    <h4 className="text-blueGray-700 uppercase">
-                                        Beginner Sessions
-                                    </h4>
+                                    <h4 className="text-blueGray-700 uppercase">Beginner Sessions</h4>
                                     <p className="text-blueGray-500">
-                                        Online Speaking Course for Beginner
-                                        level learners include basics of
-                                        grammar, vocabulary building, idioms and
-                                        phrases and sentence structure. We get
-                                        them out of their inhibition zone by
-                                        getting them to speak consistently.
+                                        Online Speaking Course for Beginner level learners include basics of grammar,
+                                        vocabulary building, idioms and phrases and sentence structure. We get them out
+                                        of their inhibition zone by getting them to speak consistently.
                                     </p>
                                 </div>
                             </section>
                             <section className="p-6 h-full">
                                 <div className="bg-amber-50 rounded-lg prose text-center p-4 py-6 space-y-6">
-                                    <h4 className="text-blueGray-700 uppercase">
-                                        Intermediate Sessions
-                                    </h4>
+                                    <h4 className="text-blueGray-700 uppercase">Intermediate Sessions</h4>
                                     <p className="text-blueGray-500">
-                                        We focus on English Fluency and language
-                                        flow. We work on Soft Skills and
-                                        communication skills required for social
-                                        life and workplace by helping you master
-                                        the art of group discussion and public
-                                        speaking skills.
+                                        We focus on English Fluency and language flow. We work on Soft Skills and
+                                        communication skills required for social life and workplace by helping you
+                                        master the art of group discussion and public speaking skills.
                                     </p>
                                 </div>
                             </section>
                             <section className="p-6 h-full">
                                 <div className="bg-amber-50 rounded-lg prose text-center p-4 py-6 space-y-6">
-                                    <h4 className="text-blueGray-700 uppercase">
-                                        Expert Sessions
-                                    </h4>
+                                    <h4 className="text-blueGray-700 uppercase">Expert Sessions</h4>
                                     <p className="text-blueGray-500">
-                                        To break the monotony of the regular
-                                        sessions, we bring in Experts who share
-                                        their experience and wisdom in their
-                                        chosen domain. Such expert sessions are
-                                        delivered by experts who are masters in
-                                        their field.
+                                        To break the monotony of the regular sessions, we bring in Experts who share
+                                        their experience and wisdom in their chosen domain. Such expert sessions are
+                                        delivered by experts who are masters in their field.
                                     </p>
                                 </div>
                             </section>
@@ -176,14 +134,9 @@ const CoursesPage: NextPage = (props: Props) => {
                         <GridRowDouble>
                             <section className="px-4">
                                 <div className="prose">
-                                    <h2 className="text-red-500 ">
-                                        Sessions for Childrens
-                                    </h2>
+                                    <h2 className="text-red-500 ">Sessions for Childrens</h2>
                                     <div className="w-full p-3 relative border-2 border-dashed border-spacing-3 border-blueGray-700 rounded-xl">
-                                        <motion.div
-                                            initial={Reveal.offscreen}
-                                            whileInView={Reveal.onscreen}
-                                        >
+                                        <motion.div initial={Reveal.offscreen} whileInView={Reveal.onscreen}>
                                             <Image
                                                 src={"../images/kids.jpg"}
                                                 width={300}
@@ -194,35 +147,22 @@ const CoursesPage: NextPage = (props: Props) => {
                                         </motion.div>
                                     </div>
                                     <p className="text-justify">
-                                        Carpe Diem's Offline &amp; Online
-                                        platform is a place where your child can
-                                        have 1-to-1 English language sessions
-                                        with qualified English tutor which is a
-                                        structured online language program for
-                                        children. Carpe Diem offers online and
-                                        offline sessions with conversation
-                                        practice, personalized feedback, and
-                                        human interaction in classes at an
-                                        affordable price. We also prepare
-                                        lessons and provide teaching materials
-                                        based on your child's level or needs
-                                        which includes Vocabulary, Phonics,
-                                        Grammar, Pronunciation, Public speaking,
-                                        Presentations skills, Group discussions,
-                                        Stage fear eradication.,
+                                        Carpe Diem's Offline &amp; Online platform is a place where your child can have
+                                        1-to-1 English language sessions with qualified English tutor which is a
+                                        structured online language program for children. Carpe Diem offers online and
+                                        offline sessions with conversation practice, personalized feedback, and human
+                                        interaction in classes at an affordable price. We also prepare lessons and
+                                        provide teaching materials based on your child's level or needs which includes
+                                        Vocabulary, Phonics, Grammar, Pronunciation, Public speaking, Presentations
+                                        skills, Group discussions, Stage fear eradication.,
                                     </p>
                                 </div>
                             </section>
                             <section className="px-4">
                                 <div className="prose">
-                                    <h2 className="text-red-500 ">
-                                        Corporate Training Offline &amp; Online
-                                    </h2>
+                                    <h2 className="text-red-500 ">Corporate Training Offline &amp; Online</h2>
                                     <div className="w-full p-3 relative border-2 border-dashed border-spacing-3 border-blueGray-700 rounded-xl">
-                                        <motion.div
-                                            initial={Reveal.offscreen}
-                                            whileInView={Reveal.onscreen}
-                                        >
+                                        <motion.div initial={Reveal.offscreen} whileInView={Reveal.onscreen}>
                                             <Image
                                                 src={"../images/mission.jpg"}
                                                 width={300}
@@ -233,23 +173,14 @@ const CoursesPage: NextPage = (props: Props) => {
                                         </motion.div>
                                     </div>
                                     <p className="text-justify">
-                                        Carpe Diem Skills Academy has
-                                        unparalleled expertise in delivering
-                                        corporate English language training
-                                        solutions. We offer the highest calibre
-                                        language training specializing in
-                                        practical business vocabulary, role
-                                        play, and also ESP (English for Specific
-                                        Purposes) for corporate. Offering Best
-                                        English training for corporate, we are
-                                        committed to partnering with clients to
-                                        deliver value-added training that brings
-                                        tangible results. In order to
-                                        communicate effectively in a
-                                        multi-cultural business environment, it
-                                        is important to be able to express one’s
-                                        ideas with impact and in appropriate
-                                        style.
+                                        Carpe Diem Skills Academy has unparalleled expertise in delivering corporate
+                                        English language training solutions. We offer the highest calibre language
+                                        training specializing in practical business vocabulary, role play, and also ESP
+                                        (English for Specific Purposes) for corporate. Offering Best English training
+                                        for corporate, we are committed to partnering with clients to deliver
+                                        value-added training that brings tangible results. In order to communicate
+                                        effectively in a multi-cultural business environment, it is important to be able
+                                        to express one’s ideas with impact and in appropriate style.
                                     </p>
                                 </div>
                             </section>

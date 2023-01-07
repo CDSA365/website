@@ -1,5 +1,5 @@
-import { StyledButton, StyledHeader, StyledNavItem } from "./styled";
-import { FaBars, FaCaretRight, FaEnvelope, FaPhoneAlt, FaSignInAlt } from "react-icons/fa";
+import { MenuDropDown, StyledButton, StyledHeader, StyledNavItem } from "./styled";
+import { FaBars, FaCaretDown, FaCaretRight, FaEnvelope, FaPhoneAlt, FaSignInAlt } from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +10,7 @@ type Props = {};
 type NavItems = {
     name: string;
     link: string;
+    submenus?: NavItems[];
 };
 
 const navItems: NavItems[] = [
@@ -24,6 +25,16 @@ const navItems: NavItems[] = [
     {
         name: "Courses",
         link: "courses",
+        submenus: [
+            {
+                name: "Public Speaking for Kids",
+                link: "public-speaking-for-kids",
+            },
+            {
+                name: "Public Speaking for Adults",
+                link: "public-speaking-for-adults",
+            },
+        ],
     },
     {
         name: "Kids Classes",
@@ -63,7 +74,7 @@ const Header = (props: Props) => {
                     <Link href={"/"}>
                         <div className="w-full h-full">
                             <Image
-                                src={"../images/cdsa-logo.png"}
+                                src={"https://www.cdsa365.com/images/cdsa-logo.png"}
                                 alt="logo"
                                 width={100}
                                 height={100}
@@ -76,8 +87,27 @@ const Header = (props: Props) => {
                     <ul className="flex flex-row gap-2 items-center">
                         {navItems.map((item, key) => (
                             <Link href={`/${item.link}`} key={key}>
-                                <StyledNavItem key={key} onClick={() => setActiveNav(key)} active={key === activeNav}>
-                                    {item.name}
+                                <StyledNavItem
+                                    key={key}
+                                    onClick={() => setActiveNav(key)}
+                                    active={key === activeNav}
+                                    className="group"
+                                >
+                                    {item.name} &nbsp; {item?.submenus && item.submenus.length > 0 && <FaCaretDown />}
+                                    {item?.submenus && item.submenus.length > 0 && (
+                                        <MenuDropDown>
+                                            {item.submenus?.map((submenu, key) => (
+                                                <Link href={`/${item.link}/${submenu.link}`} key={key}>
+                                                    <StyledNavItem
+                                                        active={key === activeNav}
+                                                        className="hover:bg-red-700 hover:text-white p-4"
+                                                    >
+                                                        {submenu.name}
+                                                    </StyledNavItem>
+                                                </Link>
+                                            ))}
+                                        </MenuDropDown>
+                                    )}
                                 </StyledNavItem>
                             </Link>
                         ))}

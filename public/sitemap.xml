@@ -1,70 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
     <loc>https://www.cdsa365.com/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-<url>
-    <loc>https://www.cdsa365.com/about-us/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-<url>
-    <loc>https://www.cdsa365.com/contact-us/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
 <url>
     <loc>https://www.cdsa365.com/adults/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
 <url>
-    <loc>https://www.cdsa365.com/enroll/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
+    <loc>https://www.cdsa365.com/about-us/</loc>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+<url>
+    <loc>https://www.cdsa365.com/contact-us/</loc>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
 <url>
     <loc>https://www.cdsa365.com/courses/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+<url>
+    <loc>https://www.cdsa365.com/enroll/</loc>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
 <url>
     <loc>https://www.cdsa365.com/kids/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
 <url>
     <loc>https://www.cdsa365.com/privacy-policy/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
 <url>
     <loc>https://www.cdsa365.com/request-a-demo/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
 <url>
     <loc>https://www.cdsa365.com/terms-and-conditions/</loc>
-    <lastmod>2022-11-02T18:47:07.876Z</lastmod>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+<url>
+    <loc>https://www.cdsa365.com/courses/public-speaking-for-adults/</loc>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+<url>
+    <loc>https://www.cdsa365.com/courses/public-speaking-for-kids/</loc>
+    <lastmod>2023-01-07T18:20:09.687Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url></urlset>
