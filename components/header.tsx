@@ -1,6 +1,6 @@
 import { MenuDropDown, StyledButton, StyledHeader, StyledNavItem } from "./styled";
 import { FaBars, FaCaretDown, FaCaretRight, FaEnvelope, FaPhoneAlt, FaSignInAlt } from "react-icons/fa";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
@@ -10,17 +10,19 @@ type Props = {};
 type NavItems = {
     name: string;
     link: string;
-    submenus?: NavItems[];
+    submenus: Partial<NavItems>[];
 };
 
 const navItems: NavItems[] = [
     {
         name: "Home",
         link: "",
+        submenus: [],
     },
     {
         name: "About Us",
         link: "about-us",
+        submenus: [],
     },
     {
         name: "Courses",
@@ -39,14 +41,17 @@ const navItems: NavItems[] = [
     {
         name: "Kids Classes",
         link: "kids",
+        submenus: [],
     },
     {
         name: "Adults Classes",
         link: "adults",
+        submenus: [],
     },
     {
         name: "Contact Us",
         link: "contact-us",
+        submenus: [],
     },
 ];
 
@@ -127,23 +132,45 @@ const Header = (props: Props) => {
                 </div>
             </StyledHeader>
             <Drawer anchor="left" open={showSidebar} onClose={() => setShowSidebar(false)}>
-                <Box sx={{ width: 250, paddingTop: "1em", paddingBottom: "1em" }} role="presentation">
+                <Box sx={{ width: 300, paddingTop: "1em", paddingBottom: "1em" }} role="presentation">
                     <div className="p-3 prose">
                         <h4>Menu</h4>
                     </div>
-                    <List>
-                        {navItems.map((item, key) => (
-                            <Link href={`/${item.link}`} key={key}>
-                                <ListItem key={key} sx={{ padding: 0 }}>
-                                    <ListItemButton>
-                                        <ListItemIcon>
-                                            <FaCaretRight />
-                                        </ListItemIcon>
-                                        <ListItemText primary={item.name} />
-                                    </ListItemButton>
-                                </ListItem>
-                            </Link>
-                        ))}
+                    <List component="ul">
+                        {navItems.map((item, key) => {
+                            return (
+                                <Fragment key={key}>
+                                    <Link href={`/${item.link}`}>
+                                        <ListItem key={key} sx={{ padding: 0 }}>
+                                            <ListItemButton>
+                                                <ListItemIcon>
+                                                    <FaCaretRight />
+                                                </ListItemIcon>
+                                                <ListItemText primary={item.name} />
+                                            </ListItemButton>
+                                        </ListItem>
+                                    </Link>
+
+                                    {item.submenus && item.submenus.length > 0 && (
+                                        <List component="ul" disablePadding>
+                                            {item.submenus?.map((submenu, key) => (
+                                                <Link href={`/${item.link}/${submenu.link}`} key={key}>
+                                                    <ListItem key={key} sx={{ padding: 0 }}>
+                                                        <ListItemButton>
+                                                            <ListItemIcon>
+                                                                <FaCaretRight />
+                                                            </ListItemIcon>
+                                                            <ListItemText primary={submenu.name} />
+                                                        </ListItemButton>
+                                                    </ListItem>
+                                                </Link>
+                                            ))}
+                                        </List>
+                                    )}
+                                </Fragment>
+                            );
+                        })}
+
                         <Link href="https://student.cdsa365.com">
                             <ListItem sx={{ padding: 0 }}>
                                 <ListItemButton>
